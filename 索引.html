@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -17,17 +17,14 @@
             --nav-height: 60px;
         }
 
-
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
-
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -35,11 +32,10 @@
             color: var(--text-main);
             margin: 0;
             padding: 0;
-            padding-bottom: 80px; /* Space for footer & FAB */
+            padding-bottom: 60px; /* Space for footer */
             background-image: radial-gradient(#FFCCBC 1px, transparent 1px);
             background-size: 20px 20px;
         }
-
 
         /* --- Header Section --- */
         header {
@@ -54,7 +50,6 @@
             padding-bottom: 40px; /* Space for nav overlap */
         }
 
-
         h1 {
             margin: 0;
             font-size: 26px;
@@ -64,7 +59,6 @@
             letter-spacing: 0.5px;
         }
 
-
         .subtitle {
             font-size: 14px;
             color: rgba(255, 255, 255, 0.95);
@@ -72,7 +66,6 @@
             font-weight: 500;
             margin-bottom: 20px;
         }
-
 
         /* --- Info Card (Flight & Hotel) --- */
         .info-card {
@@ -87,18 +80,15 @@
             margin-bottom: 10px; /* Space between cards */
         }
 
-
         .info-row {
             display: flex;
             align-items: flex-start; /* Align top for address */
             margin-bottom: 8px;
         }
 
-
         .info-row:last-child {
             margin-bottom: 0;
         }
-
 
         .info-icon {
             font-size: 18px;
@@ -108,11 +98,9 @@
             margin-top: 2px;
         }
 
-
         .info-details {
             flex: 1;
         }
-
 
         .info-title {
             font-weight: 700;
@@ -122,13 +110,11 @@
             margin-bottom: 2px;
         }
 
-
         .info-sub {
             opacity: 0.95;
             font-size: 13px;
             line-height: 1.4;
         }
-
 
         .info-badge {
             background: rgba(0,0,0,0.15);
@@ -139,7 +125,6 @@
             vertical-align: middle;
             font-weight: normal;
         }
-
 
         .header-link-btn {
             display: inline-block;
@@ -158,7 +143,6 @@
             background: rgba(255,255,255,0.4);
         }
 
-
         /* --- Navigation Tabs --- */
         .nav-container {
             display: flex;
@@ -176,11 +160,9 @@
             border-bottom: 1px solid rgba(0,0,0,0.03);
         }
 
-
         .nav-container::-webkit-scrollbar {
             display: none;
         }
-
 
         .day-btn {
             flex: 0 0 auto;
@@ -201,14 +183,12 @@
             text-decoration: none;
         }
 
-
         .day-btn span.date {
             font-size: 10px;
             font-weight: 500;
             margin-top: 3px;
             opacity: 0.8;
         }
-
 
         .day-btn.active {
             background: var(--accent-color);
@@ -217,7 +197,6 @@
             box-shadow: 0 4px 12px rgba(255, 112, 67, 0.4);
         }
 
-
         /* --- Content Area --- */
         .content-container {
             padding: 20px 16px;
@@ -225,13 +204,11 @@
             margin: 0 auto;
         }
 
-
         .day-content, .section-wrapper {
             display: block;
             margin-bottom: 40px;
             scroll-margin-top: 90px; /* Adjusted for nav height */
         }
-
 
         /* --- Card & Timeline Design (Updated for Day Badge) --- */
         .card-header {
@@ -252,7 +229,6 @@
             display: none; /* Hide pseudo-element, emoji is in text */
         }
 
-
         .day-label {
             /* Changed from absolute to static for flow layout */
             position: static;
@@ -268,7 +244,6 @@
             margin-bottom: 2px;
         }
 
-
         .card-title-text {
             font-size: 20px;
             font-weight: 800;
@@ -279,7 +254,6 @@
             gap: 8px;
         }
 
-
         .timeline-item {
             position: relative;
             padding-left: 28px;
@@ -288,11 +262,9 @@
             border-left: 2px dashed #D7CCC8;
         }
 
-
         .timeline-item:last-child {
             border-left: 2px solid transparent;
         }
-
 
         .timeline-item::before {
             content: '🌴';
@@ -305,7 +277,6 @@
             line-height: 1;
         }
 
-
         /* --- Travel Bridge --- */
         .travel-bridge {
             position: relative;
@@ -315,7 +286,6 @@
             display: flex;
             align-items: center;
         }
-
 
         .travel-badge {
             font-size: 11px;
@@ -330,7 +300,6 @@
             font-weight: 600;
         }
 
-
         .time-badge {
             display: inline-block;
             background: var(--primary-light);
@@ -343,14 +312,12 @@
             letter-spacing: 0.5px;
         }
 
-
         .activity-title {
             font-size: 17px;
             font-weight: 700;
             margin: 0 0 8px 0;
             color: var(--text-main);
         }
-
 
         .activity-desc {
             font-size: 15px;
@@ -362,7 +329,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border: 1px solid rgba(0,0,0,0.02);
         }
-
 
         /* Tags inside card */
         .tag {
@@ -380,7 +346,6 @@
         .tag.view { background: #B2DFDB; color: #00695C; }
         .tag.stay { background: #CFD8DC; color: #455A64; }
 
-
         /* Highlight Box */
         .highlight {
             margin-top: 10px;
@@ -392,7 +357,6 @@
             display: inline-block;
             border: 1px solid #FFCDD2;
         }
-
 
         /* Map Button */
         .map-btn {
@@ -414,7 +378,6 @@
             box-shadow: 0 2px 4px rgba(38, 166, 154, 0.2);
         }
 
-
         /* Footer */
         footer {
             text-align: center;
@@ -426,7 +389,6 @@
             border-top: 1px dashed #D7CCC8;
         }
 
-
         .end-trip {
             text-align: center;
             margin: 40px 0;
@@ -435,14 +397,12 @@
             opacity: 0.6;
         }
 
-
         /* --- Highlight Section --- */
         .section-header {
             padding: 25px 20px 10px;
             text-align: center;
             margin-top: 20px;
         }
-
 
         .section-title {
             font-size: 20px;
@@ -452,7 +412,6 @@
             margin-bottom: 5px;
         }
 
-
         .section-subtitle {
             font-size: 12px;
             color: var(--accent-color);
@@ -461,14 +420,12 @@
             font-weight: 700;
         }
 
-
         .vertical-list-container {
             display: flex;
             flex-direction: column; /* Vertical stack */
             padding: 10px 20px 30px;
             gap: 20px;
         }
-
 
         .highlight-card {
             width: 100%; /* Full width */
@@ -479,7 +436,6 @@
             position: relative;
         }
 
-
         /* * IMPORTANT: Using <label> to wrap image for file input click. */
         .highlight-img-wrapper {
             display: block; /* Important for label */
@@ -489,7 +445,6 @@
             position: relative;
             cursor: pointer;
         }
-
 
         /* Overlay text */
         .highlight-img-wrapper::after {
@@ -507,7 +462,6 @@
             pointer-events: none; /* Let click pass through */
         }
 
-
         .highlight-img {
             width: 100%;
             height: 100%;
@@ -515,11 +469,9 @@
             transition: opacity 0.3s;
         }
 
-
         .card-content {
             padding: 15px 20px;
         }
-
 
         .card-h3 {
             margin: 0 0 5px;
@@ -527,7 +479,6 @@
             font-weight: 700;
             color: var(--text-main);
         }
-
 
         .card-eng {
             font-size: 11px;
@@ -538,14 +489,12 @@
             display: block;
         }
 
-
         .card-desc {
             font-size: 14px;
             color: var(--text-sub);
             line-height: 1.5;
             margin-bottom: 15px;
         }
-
 
         .card-map-btn {
             display: block;
@@ -562,11 +511,9 @@
             transition: all 0.2s;
         }
 
-
         .card-map-btn:active {
             background: var(--primary-light);
         }
-
 
         /* --- Reset Button for Demo --- */
         .reset-btn {
@@ -581,221 +528,13 @@
             cursor: pointer;
         }
 
-
-        /* --- AI Features --- */
-        .ai-btn {
-            display: inline-block;
-            margin-top: 8px;
-            margin-right: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            color: #6A1B9A;
-            background: #F3E5F5;
-            padding: 6px 12px;
-            border-radius: 15px;
-            text-decoration: none;
-            border: 1px solid #E1BEE7;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .ai-btn:hover {
-            background: #E1BEE7;
-        }
-
-
-        /* Floating Chat Button */
-        .chat-fab {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #FF6F00, #FFCA28);
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(255, 111, 0, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            z-index: 1000;
-            transition: transform 0.2s;
-        }
-
-
-        .chat-fab:active {
-            transform: scale(0.9);
-        }
-
-
-        /* Chat Window Modal */
-        .chat-modal {
-            display: none;
-            position: fixed;
-            bottom: 95px;
-            right: 25px;
-            width: 90%;
-            max-width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            z-index: 1000;
-            flex-direction: column;
-            overflow: hidden;
-            animation: slideUp 0.3s ease-out;
-        }
-
-
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-
-        .chat-header {
-            background: linear-gradient(135deg, #FF6F00, #FFCA28);
-            padding: 15px;
-            color: white;
-            font-weight: 700;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-
-        .chat-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-
-        .chat-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            background: #F9F9F9;
-            font-size: 14px;
-        }
-
-
-        .message {
-            margin-bottom: 12px;
-            max-width: 85%;
-            padding: 10px 14px;
-            border-radius: 18px;
-            line-height: 1.4;
-        }
-
-
-        .message.user {
-            background: #E0F2F1; /* Primary Light */
-            color: #00695C;
-            margin-left: auto;
-            border-bottom-right-radius: 4px;
-        }
-
-
-        .message.bot {
-            background: #fff;
-            border: 1px solid #eee;
-            margin-right: auto;
-            border-bottom-left-radius: 4px;
-            color: #333;
-        }
-
-
-        .chat-input-area {
-            padding: 10px;
-            border-top: 1px solid #eee;
-            display: flex;
-            background: white;
-        }
-
-
-        .chat-input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            margin-right: 10px;
-            outline: none;
-        }
-
-
-        .chat-send {
-            background: #FF6F00;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-        }
-
-
-        /* Loading indicator */
-        .typing-indicator {
-            font-style: italic;
-            color: #999;
-            font-size: 12px;
-            margin-bottom: 10px;
-            display: none;
-        }
-
-
-        /* Key Input Overlay */
-        .key-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,0.95);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            padding: 20px;
-            text-align: center;
-        }
-
-
-        .key-input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-
-
-        .save-key-btn {
-            background: #00897B;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-
     </style>
 </head>
 <body>
 
-
 <header>
     <h1>Okinawa Trip 🌊</h1>
     <div class="subtitle">與家人的慢活時光</div>
-
 
     <!-- Flight Info -->
     <div class="info-card">
@@ -820,7 +559,6 @@
         </div>
     </div>
 
-
     <!-- Accommodation Info -->
     <div class="info-card">
         <div class="info-row">
@@ -835,7 +573,6 @@
         </div>
     </div>
 </header>
-
 
 <!-- Navigation Buttons (Scroll Anchors) -->
 <div class="nav-container">
@@ -870,9 +607,7 @@
     </button>
 </div>
 
-
 <div class="content-container">
-
 
     <!-- Day 1 Content -->
     <div id="day1" class="day-content">
@@ -892,11 +627,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 20 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">13:30</span>
@@ -909,11 +642,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚶 步行約 5-8 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">14:00</span>
@@ -924,19 +655,15 @@
                 2. 甜點：步行去吃「鹽屋」雪鹽霜淇淋 🍦。<br>
                 3. 備案：您發現的市場周邊美食。
                 <br>
-                <button class="ai-btn" onclick="askGemini('請推薦牧志市場必吃的海鮮種類和吃法')">✨ AI 推薦吃什麼？</button>
-                <br>
                 <a href="https://www.google.com/maps/search/?api=1&query=Makishi+Public+Market" target="_blank" class="map-btn">📍 牧志市場</a>
                 <a href="https://maps.app.goo.gl/rsmVqkJYR2vg6m3u7" target="_blank" class="map-btn">📍 您的推薦餐廳</a>
                 <a href="https://maps.app.goo.gl/yPawfi2VhBGfbyHX6?g_st=ipc" target="_blank" class="map-btn">📍 鹽屋國際通</a>
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 取行李往民宿 約 15 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">16:00</span>
@@ -949,11 +676,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚶 步行約 10-15 分鐘 / 🚕 5 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">18:45</span>
@@ -967,11 +692,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚶 步行 3 分鐘至餐廳</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">19:15</span>
@@ -981,17 +704,13 @@
                 ★ 已預約 ★ <br>
                 頂級石垣牛與阿古豬烤肉，環境優雅舒適。
                 <br>
-                <button class="ai-btn" onclick="askGemini('琉球的牛有什麼必點的推薦菜色？幫我列出日文菜名')">✨ AI 推薦菜色</button>
-                <br>
                 <a href="https://maps.app.goo.gl/1KxWoCev2kPTU2bdA?g_st=ipc" target="_blank" class="map-btn">📍 餐廳導航 (久茂地別館)</a>
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 10 分鐘 / 🚶 步行回民宿</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">21:30</span>
@@ -1006,14 +725,12 @@
         </div>
     </div>
 
-
     <!-- Day 2 Content -->
     <div id="day2" class="day-content">
         <div class="card-header">
             <span class="day-label">DAY 2 - 2/28 (六)</span>
             <span class="card-title-text">🌺 PARCO CITY & 壽喜燒</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">09:30</span>
@@ -1024,11 +741,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 20 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">10:00</span>
@@ -1039,12 +754,9 @@
                 重點攻略：Uniqlo, GU, 松本清。<br>
                 <strong style="color:var(--primary-color)">★ 3COINS+plus</strong>
                 <br>
-                <button class="ai-btn" onclick="askGemini('沖繩 PARCO CITY 有什麼必買的伴手禮或特色商店？')">✨ AI 必買推薦</button>
-                <br>
                 <a href="https://www.google.com/maps/search/?api=1&query=San-A+Urasoe+West+Coast+PARCO+CITY" target="_blank" class="map-btn">📍 Google 導航</a>
             </div>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">12:30</span>
@@ -1055,11 +767,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 20 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">18:30</span>
@@ -1071,11 +781,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 5-10 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">19:30</span>
@@ -1089,11 +797,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 10 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">21:30</span>
@@ -1105,7 +811,6 @@
         </div>
     </div>
 
-
     <!-- Day 3 Content -->
     <div id="day3" class="day-content">
         <div class="card-header">
@@ -1113,23 +818,18 @@
             <span class="card-title-text">🌺 鐘乳石 & 瀨長島夕陽</span>
         </div>
 
-
         <div class="timeline-item">
             <span class="time-badge">09:15</span>
             <h3 class="activity-title">🚕 民宿出發</h3>
             <div class="activity-desc">
                 前往南部玉泉洞，準備參觀鐘乳石。<br>
-                <div class="highlight">⚠️ 出門檢查：有帶毛巾嗎？建議穿「方便穿脫的鞋子」(足湯用)。</div>
-                <br>
                 <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿位置</a>
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 40 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">10:00</span>
@@ -1139,17 +839,13 @@
                 搭計程車往南部。<br>
                 漫步於恆溫 21°C 的壯觀鐘乳石洞。
                 <br>
-                <button class="ai-btn" onclick="askGemini('玉泉洞裡面有什麼要注意的？大概要走多久？')">✨ AI 參觀攻略</button>
-                <br>
                 <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+World+Gyokusendo" target="_blank" class="map-btn">📍 Google 導航</a>
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 30 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">13:00</span>
@@ -1164,7 +860,6 @@
             </div>
         </div>
 
-
         <div class="timeline-item">
             <span class="time-badge">14:30</span>
             <h3 class="activity-title">📷 續攤：足湯 & 下午茶</h3>
@@ -1175,11 +870,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 25 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">19:30</span>
@@ -1193,14 +886,12 @@
         </div>
     </div>
 
-
     <!-- Day 4 Content -->
     <div id="day4" class="day-content">
         <div class="card-header">
             <span class="day-label">DAY 4 - 3/02 (一)</span>
             <span class="card-title-text">🌺 海灘祈福 & 古城文化</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">09:15</span>
@@ -1211,11 +902,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 5 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">09:30</span>
@@ -1225,17 +914,13 @@
                 離民宿僅 5 分鐘車程。<br>
                 悠閒踩踩沙、看海，並在懸崖上的神社祈福 ⛩️。
                 <br>
-                <button class="ai-btn" onclick="askGemini('波上宮怎麼參拜？有什麼特別的御守推薦？')">✨ AI 參拜指南</button>
-                <br>
                 <a href="https://www.google.com/maps/search/?api=1&query=Naminouegu+Shrine" target="_blank" class="map-btn">📍 Google 導航</a>
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 20-25 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">11:30</span>
@@ -1248,11 +933,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚝 電車 / 🚕 計程車約 25-30 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">14:30</span>
@@ -1266,11 +949,9 @@
             </div>
         </div>
 
-
         <div class="travel-bridge">
             <span class="travel-badge">🚕 計程車約 15 分鐘</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">18:00</span>
@@ -1284,14 +965,12 @@
         </div>
     </div>
 
-
     <!-- Day 5 Content -->
     <div id="day5" class="day-content">
         <div class="card-header">
             <span class="day-label">DAY 5 - 3/03 (二)</span>
             <span class="card-title-text">🌺 早安，順利返台</span>
         </div>
-
 
         <div class="timeline-item">
             <span class="time-badge">05:45</span>
@@ -1303,7 +982,6 @@
             </div>
         </div>
 
-
         <div class="timeline-item">
             <span class="time-badge">08:00</span>
             <h3 class="activity-title">✈️ 班機起飛</h3>
@@ -1313,14 +991,11 @@
         </div>
     </div>
 
-
     <div class="end-trip">
         ~ 旅程圓滿結束 ~
     </div>
 
-
 </div>
-
 
 <!-- === Highlight Section 1: Food === -->
 <div id="section-food" class="section-wrapper">
@@ -1344,7 +1019,6 @@
             </div>
         </div>
 
-
         <!-- Card: Shrimp Rice -->
         <div class="highlight-card">
             <input type="file" id="file-shrimp" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-shrimp', 'okinawa_img_shrimp')">
@@ -1358,7 +1032,6 @@
                 <a href="https://maps.app.goo.gl/rsmVqkJYR2vg6m3u7" target="_blank" class="card-map-btn">📍 Google Maps</a>
             </div>
         </div>
-
 
         <!-- Card: Sukiyaki -->
         <div class="highlight-card">
@@ -1374,13 +1047,13 @@
             </div>
         </div>
 
-
         <!-- Card: Blue Seal / Salt Ice Cream -->
         <div class="highlight-card">
             <input type="file" id="file-icecream" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-icecream', 'okinawa_img_icecream')">
             <label class="highlight-img-wrapper" for="file-icecream">
+                <!-- Updated Image to a new soft serve photo based on user request -->
                 <img id="img-icecream" src="https://images.unsplash.com/photo-1516550893923-37a49fc51b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salt Soft Serve Ice Cream" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">鹽屋雪鹽霜淇淋</h3>
                 <span class="card-eng">SALT ICE CREAM</span>
@@ -1390,7 +1063,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- === Highlight Section 2: Spots === -->
 <div id="section-spots" class="section-wrapper">
@@ -1414,7 +1086,6 @@
             </div>
         </div>
 
-
         <!-- Card: PARCO CITY -->
         <div class="highlight-card">
             <input type="file" id="file-parco" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-parco', 'okinawa_img_parco')">
@@ -1429,7 +1100,6 @@
             </div>
         </div>
 
-
         <!-- Card: Gyokusendo -->
         <div class="highlight-card">
             <input type="file" id="file-cave" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-cave', 'okinawa_img_cave')">
@@ -1443,7 +1113,6 @@
                 <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+World+Gyokusendo" target="_blank" class="card-map-btn">📍 Google Maps</a>
             </div>
         </div>
-
 
         <!-- Card: Shuri Castle -->
         <div class="highlight-card">
@@ -1461,107 +1130,30 @@
     </div>
 </div>
 
-
-<!-- Floating Chat Button -->
-<div class="chat-fab" onclick="toggleChat()">✨</div>
-
-
-<!-- Chat Window -->
-<div class="chat-modal" id="chatModal">
-    <div class="chat-header">
-        <span>沖繩小幫手</span>
-        <button class="chat-close" onclick="toggleChat()">×</button>
-    </div>
-    <div class="key-overlay" id="keyOverlay">
-        <h3>請輸入 Gemini API Key</h3>
-        <p style="font-size:12px; margin-bottom:15px; color:#666;">
-            您的 Key 僅儲存在此設備瀏覽器中<br>
-            不會上傳到任何伺服器，安全無虞。
-        </p>
-        <input type="password" id="userApiKey" class="key-input" placeholder="AIza...">
-        <button class="save-key-btn" onclick="saveApiKey()">開始使用</button>
-        <div style="margin-top:10px; font-size:11px;">
-            <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#007AFF;">取得免費 API Key</a>
-        </div>
-    </div>
-
-
-    <div class="chat-messages" id="chatMessages">
-        <div class="message bot">
-            哈囉！我是您的沖繩旅遊助手 👋<br>
-            有什麼我可以幫您的嗎？<br>
-            例如：
-            <ul>
-                <li>「幫我翻譯這句日文」</li>
-                <li>「附近有什麼好吃的？」</li>
-                <li>「天氣不好怎麼辦？」</li>
-            </ul>
-        </div>
-    </div>
-    <div class="chat-input-area">
-        <input type="text" class="chat-input" id="userInput" placeholder="輸入問題..." onkeypress="handleKeyPress(event)">
-        <button class="chat-send" onclick="sendMessage()">➤</button>
-    </div>
-</div>
-
-
 <footer>
     Designed for 2026 Okinawa Family Trip 🐢
     <button class="reset-btn" onclick="resetImages()">重置所有照片</button>
-    <button class="reset-btn" onclick="clearApiKey()">重置 API Key</button>
 </footer>
 
-
 <script>
-    // --- Scroll Function ---
+    // Simple script to handle button state
     function scrollToDay(dayId) {
         const element = document.getElementById(dayId);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
             
+            // Update active button state
             const buttons = document.querySelectorAll('.day-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Find the button that called this function and add active class
+            // Note: This simple implementation might need event.target logic in a real app,
+            // but for this inline handler, we can rely on user click visually.
+            // For better UX, we'd use IntersectionObserver to update buttons on scroll.
         }
     }
 
-
-    // --- Intersection Observer (Active Tab State) ---
-    document.addEventListener('DOMContentLoaded', () => {
-        // Load saved images first
-        loadSavedImages();
-        
-        // Check for API Key
-        checkApiKey();
-
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    const buttons = document.querySelectorAll('.day-btn');
-                    buttons.forEach(btn => {
-                        btn.classList.remove('active');
-                        // Match button onclick with section id
-                        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(id)) {
-                            btn.classList.add('active');
-                            // Scroll nav to visible
-                            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                        }
-                    });
-                }
-            });
-        }, {
-            rootMargin: '-20% 0px -60% 0px' 
-        });
-
-
-        document.querySelectorAll('.day-content, .section-wrapper').forEach(section => {
-            observer.observe(section);
-        });
-    });
-
-
-    // --- Image Upload & LocalStorage Logic ---
+    // Image Upload Handler
     function updateImage(input, imgId, storageKey) {
         if (input.files && input.files[0]) {
             const reader = new FileReader();
@@ -1583,7 +1175,6 @@
         }
     }
 
-
     function loadSavedImages() {
         const images = [
             { id: 'img-ryukyu', key: 'okinawa_img_ryukyu' },
@@ -1596,7 +1187,6 @@
             { id: 'img-shuri', key: 'okinawa_img_shuri' }
         ];
 
-
         images.forEach(img => {
             const savedData = localStorage.getItem(img.key);
             if (savedData) {
@@ -1608,7 +1198,6 @@
         });
     }
 
-
     function resetImages() {
         if(confirm('確定要重置所有照片回預設值嗎？')) {
             // Remove image keys only
@@ -1619,159 +1208,32 @@
         }
     }
 
-
-    // --- AI Chat Logic (BYOK - Bring Your Own Key) ---
-    const chatModal = document.getElementById('chatModal');
-    const chatMessages = document.getElementById('chatMessages');
-    const userInput = document.getElementById('userInput');
-    const keyOverlay = document.getElementById('keyOverlay');
-    
-    let apiKey = "";
-
-
-    function toggleChat() {
-        chatModal.style.display = chatModal.style.display === 'flex' ? 'none' : 'flex';
-        checkApiKey();
-    }
-
-
-    function checkApiKey() {
-        const savedKey = localStorage.getItem('user_gemini_key');
-        if (savedKey) {
-            apiKey = savedKey;
-            keyOverlay.style.display = 'none';
-        } else {
-            keyOverlay.style.display = 'flex';
-        }
-    }
-
-
-    function saveApiKey() {
-        const inputKey = document.getElementById('userApiKey').value.trim();
-        if (inputKey) {
-            localStorage.setItem('user_gemini_key', inputKey);
-            apiKey = inputKey;
-            keyOverlay.style.display = 'none';
-            alert('API Key 已儲存！您可以開始使用 AI 功能了。');
-        } else {
-            alert('請輸入有效的 API Key');
-        }
-    }
-
-
-    function clearApiKey() {
-        if(confirm('確定要清除儲存的 API Key 嗎？')) {
-            localStorage.removeItem('user_gemini_key');
-            apiKey = "";
-            alert('API Key 已清除。下次使用 AI 功能需重新輸入。');
-        }
-    }
-
-
-    function askGemini(question) {
-        toggleChat();
-        userInput.value = question;
-        sendMessage();
-    }
-
-
-    function handleKeyPress(e) {
-        if (e.key === 'Enter') sendMessage();
-    }
-
-
-    async function sendMessage() {
-        if (!apiKey) {
-            alert('請先輸入 API Key 才能傳送訊息');
-            return;
-        }
-
-
-        const text = userInput.value.trim();
-        if (!text) return;
-
-
-        // Add User Message
-        appendMessage('user', text);
-        userInput.value = '';
-
-
-        // Show Loading
-        const loadingId = appendMessage('bot', '<span class="typing-indicator">思考中...</span>');
-
-
-        try {
-            // Call Gemini API
-            const response = await callGeminiAPI(text);
-            
-            // Remove loading and show response
-            const loadingMsg = document.getElementById(loadingId);
-            if (loadingMsg) loadingMsg.remove();
-            
-            appendMessage('bot', response);
-
-
-        } catch (error) {
-            console.error(error);
-            const loadingMsg = document.getElementById(loadingId);
-            if (loadingMsg) loadingMsg.remove();
-            appendMessage('bot', '發生錯誤，請檢查您的 API Key 是否正確，或稍後再試。');
-        }
-    }
-
-
-    function appendMessage(sender, html) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${sender}`;
-        msgDiv.id = `msg-${Date.now()}`;
-        msgDiv.innerHTML = html;
-        chatMessages.appendChild(msgDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        return msgDiv.id;
-    }
-
-
-    async function callGeminiAPI(prompt) {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-        
-        const systemInstruction = `
-            You are a helpful travel guide for a family trip to Okinawa. 
-            The family is staying in Maejima, Naha. 
-            They are visiting spots like Ryukyu no Ushi, PARCO CITY, Gyokusendo, Senagajima, etc. 
-            Answer their questions about the itinerary, provide Japanese translations for ordering food or asking directions, and give cultural tips. 
-            Keep answers concise, friendly, and in Traditional Chinese.
-        `;
-
-
-        const data = {
-            contents: [{
-                role: "user",
-                parts: [{ text: systemInstruction + "\n\nUser Question: " + prompt }]
-            }]
-        };
-
-
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
+    // Optional: Add IntersectionObserver to highlight button on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    const buttons = document.querySelectorAll('.day-btn');
+                    buttons.forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.getAttribute('onclick').includes(id)) {
+                            btn.classList.add('active');
+                            // Scroll nav to visible
+                            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        }
+                    });
+                }
+            });
+        }, {
+            rootMargin: '-20% 0px -60% 0px' // Adjust trigger area
         });
 
-
-        if (!response.ok) {
-            throw new Error(`API Error: ${response.status}`);
-        }
-
-
-        const result = await response.json();
-        return result.candidates[0].content.parts[0].text;
-    }
-
-
+        document.querySelectorAll('.day-content, .section-wrapper').forEach(section => {
+            observer.observe(section);
+        });
+    });
 </script>
-
 
 </body>
 </html>
