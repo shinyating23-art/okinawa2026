@@ -1,0 +1,1777 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>沖繩慢活海陸饗宴 2026</title>
+    <style>
+        :root {
+            /* Aloha / Okinawa Tropical Palette */
+            --primary-color: #00897B; /* Deep Tropical Teal */
+            --primary-light: #E0F2F1; /* Soft Teal background */
+            --accent-color: #FF7043; /* Coral / Hibiscus Orange */
+            --bg-color: #FFFDF7; /* Warm Sand / Creamy White */
+            --card-bg: #FFFFFF;
+            --text-main: #3E2723; /* Dark Coffee Brown */
+            --text-sub: #795548; /* Lighter Brown */
+            --nav-height: 60px;
+        }
+
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            padding-bottom: 80px; /* Space for footer & FAB */
+            background-image: radial-gradient(#FFCCBC 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+
+        /* --- Header Section --- */
+        header {
+            background: linear-gradient(135deg, #26A69A, #4DB6AC);
+            padding: 25px 20px 30px;
+            text-align: left;
+            position: relative; 
+            color: white;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            margin-bottom: -20px; /* Overlap with nav */
+            padding-bottom: 40px; /* Space for nav overlap */
+        }
+
+
+        h1 {
+            margin: 0;
+            font-size: 26px;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            letter-spacing: 0.5px;
+        }
+
+
+        .subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-top: 6px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+
+        /* --- Info Card (Flight & Hotel) --- */
+        .info-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 15px;
+            color: white;
+            font-size: 13px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 10px; /* Space between cards */
+        }
+
+
+        .info-row {
+            display: flex;
+            align-items: flex-start; /* Align top for address */
+            margin-bottom: 8px;
+        }
+
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .info-icon {
+            font-size: 18px;
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
+            margin-top: 2px;
+        }
+
+
+        .info-details {
+            flex: 1;
+        }
+
+
+        .info-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: #FFF3E0; /* Warm glow */
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+
+        .info-sub {
+            opacity: 0.95;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+
+        .info-badge {
+            background: rgba(0,0,0,0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-left: 8px;
+            vertical-align: middle;
+            font-weight: normal;
+        }
+
+
+        .header-link-btn {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 11px;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        
+        .header-link-btn:active {
+            background: rgba(255,255,255,0.4);
+        }
+
+
+        /* --- Navigation Tabs --- */
+        .nav-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 15px 15px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            gap: 12px;
+            position: sticky;
+            top: 0; /* Sticks to top */
+            z-index: 999;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+
+        .nav-container::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .day-btn {
+            flex: 0 0 auto;
+            border: none;
+            background: #F5F5F5;
+            color: var(--text-sub);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 75px;
+            text-decoration: none;
+        }
+
+
+        .day-btn span.date {
+            font-size: 10px;
+            font-weight: 500;
+            margin-top: 3px;
+            opacity: 0.8;
+        }
+
+
+        .day-btn.active {
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 112, 67, 0.4);
+        }
+
+
+        /* --- Content Area --- */
+        .content-container {
+            padding: 20px 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+
+        .day-content, .section-wrapper {
+            display: block;
+            margin-bottom: 40px;
+            scroll-margin-top: 90px; /* Adjusted for nav height */
+        }
+
+
+        /* --- Card & Timeline Design (Updated for Day Badge) --- */
+        .card-header {
+            background: #fff;
+            padding: 15px 18px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 25px;
+            /* Changed to column for stacked layout */
+            display: flex;
+            flex-direction: column; 
+            align-items: flex-start;
+            gap: 5px;
+            position: relative;
+        }
+        
+        .card-header::before {
+            display: none; /* Hide pseudo-element, emoji is in text */
+        }
+
+
+        .day-label {
+            /* Changed from absolute to static for flow layout */
+            position: static;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent-color);
+            background: rgba(255, 112, 67, 0.12);
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 2px;
+        }
+
+
+        .card-title-text {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+
+        .timeline-item {
+            position: relative;
+            padding-left: 28px;
+            padding-bottom: 10px;
+            margin-bottom: 0;
+            border-left: 2px dashed #D7CCC8;
+        }
+
+
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+
+
+        .timeline-item::before {
+            content: '🌴';
+            position: absolute;
+            left: -10px;
+            top: 0px;
+            font-size: 14px;
+            background: var(--bg-color);
+            z-index: 2;
+            line-height: 1;
+        }
+
+
+        /* --- Travel Bridge --- */
+        .travel-bridge {
+            position: relative;
+            padding-left: 28px;
+            padding-bottom: 20px;
+            border-left: 2px dashed #D7CCC8;
+            display: flex;
+            align-items: center;
+        }
+
+
+        .travel-badge {
+            font-size: 11px;
+            color: #5D4037;
+            background-color: #EFEBE9;
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid #D7CCC8;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+
+
+        .time-badge {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-color);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 15px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+
+        .activity-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            color: var(--text-main);
+        }
+
+
+        .activity-desc {
+            font-size: 15px;
+            color: var(--text-sub);
+            line-height: 1.6;
+            background: #fff;
+            padding: 15px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+
+        /* Tags inside card */
+        .tag {
+            display: inline-block;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            margin-right: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .tag.food { background: #FFCCBC; color: #D84315; }
+        .tag.shop { background: #E1BEE7; color: #6A1B9A; }
+        .tag.view { background: #B2DFDB; color: #00695C; }
+        .tag.stay { background: #CFD8DC; color: #455A64; }
+
+
+        /* Highlight Box */
+        .highlight {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #C62828;
+            background: #FFEBEE;
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: inline-block;
+            border: 1px solid #FFCDD2;
+        }
+
+
+        /* Map Button */
+        .map-btn {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(45deg, var(--primary-color), #4DB6AC);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 3px 8px rgba(38, 166, 154, 0.3);
+        }
+        
+        .map-btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 2px 4px rgba(38, 166, 154, 0.2);
+        }
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: #A1887F;
+            padding: 30px;
+            opacity: 0.8;
+            margin-top: 20px;
+            border-top: 1px dashed #D7CCC8;
+        }
+
+
+        .end-trip {
+            text-align: center;
+            margin: 40px 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            opacity: 0.6;
+        }
+
+
+        /* --- Highlight Section --- */
+        .section-header {
+            padding: 25px 20px 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+
+        .section-subtitle {
+            font-size: 12px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+
+        .vertical-list-container {
+            display: flex;
+            flex-direction: column; /* Vertical stack */
+            padding: 10px 20px 30px;
+            gap: 20px;
+        }
+
+
+        .highlight-card {
+            width: 100%; /* Full width */
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            position: relative;
+        }
+
+
+        /* * IMPORTANT: Using <label> to wrap image for file input click. */
+        .highlight-img-wrapper {
+            display: block; /* Important for label */
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+
+        /* Overlay text */
+        .highlight-img-wrapper::after {
+            content: '📷 點擊換圖 (會自動儲存)';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            backdrop-filter: blur(2px);
+            opacity: 0.9;
+            pointer-events: none; /* Let click pass through */
+        }
+
+
+        .highlight-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+
+
+        .card-content {
+            padding: 15px 20px;
+        }
+
+
+        .card-h3 {
+            margin: 0 0 5px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+
+        .card-eng {
+            font-size: 11px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+
+        .card-map-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background: #fff;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+
+        .card-map-btn:active {
+            background: var(--primary-light);
+        }
+
+
+        /* --- Reset Button for Demo --- */
+        .reset-btn {
+            display: block;
+            margin: 20px auto;
+            background: transparent;
+            border: 1px dashed #999;
+            color: #999;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+
+        /* --- AI Features --- */
+        .ai-btn {
+            display: inline-block;
+            margin-top: 8px;
+            margin-right: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #6A1B9A;
+            background: #F3E5F5;
+            padding: 6px 12px;
+            border-radius: 15px;
+            text-decoration: none;
+            border: 1px solid #E1BEE7;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .ai-btn:hover {
+            background: #E1BEE7;
+        }
+
+
+        /* Floating Chat Button */
+        .chat-fab {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FF6F00, #FFCA28);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(255, 111, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+
+        .chat-fab:active {
+            transform: scale(0.9);
+        }
+
+
+        /* Chat Window Modal */
+        .chat-modal {
+            display: none;
+            position: fixed;
+            bottom: 95px;
+            right: 25px;
+            width: 90%;
+            max-width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            z-index: 1000;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideUp 0.3s ease-out;
+        }
+
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+
+        .chat-header {
+            background: linear-gradient(135deg, #FF6F00, #FFCA28);
+            padding: 15px;
+            color: white;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #F9F9F9;
+            font-size: 14px;
+        }
+
+
+        .message {
+            margin-bottom: 12px;
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 18px;
+            line-height: 1.4;
+        }
+
+
+        .message.user {
+            background: #E0F2F1; /* Primary Light */
+            color: #00695C;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+
+
+        .message.bot {
+            background: #fff;
+            border: 1px solid #eee;
+            margin-right: auto;
+            border-bottom-left-radius: 4px;
+            color: #333;
+        }
+
+
+        .chat-input-area {
+            padding: 10px;
+            border-top: 1px solid #eee;
+            display: flex;
+            background: white;
+        }
+
+
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 10px;
+            outline: none;
+        }
+
+
+        .chat-send {
+            background: #FF6F00;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+
+        /* Loading indicator */
+        .typing-indicator {
+            font-style: italic;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+
+        /* Key Input Overlay */
+        .key-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            padding: 20px;
+            text-align: center;
+        }
+
+
+        .key-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+
+        .save-key-btn {
+            background: #00897B;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<header>
+    <h1>Okinawa Trip 🌊</h1>
+    <div class="subtitle">與家人的慢活時光</div>
+
+
+    <!-- Flight Info -->
+    <div class="info-card">
+        <div class="info-row">
+            <div class="info-icon">✈️</div>
+            <div class="info-details">
+                <div class="info-title">
+                    2/27 (五) 10:00 ➝ 12:30 <span class="info-badge">NU302</span>
+                </div>
+                <div class="info-sub">Taipei (TPE) ➝ Okinawa (OKA)</div>
+            </div>
+        </div>
+        <div style="height:1px; background:rgba(255,255,255,0.2); margin:10px 0;"></div>
+        <div class="info-row">
+            <div class="info-icon">✈️</div>
+            <div class="info-details">
+                <div class="info-title">
+                    3/03 (二) 08:00 ➝ 08:45 <span class="info-badge">NU301</span>
+                </div>
+                <div class="info-sub">Okinawa (OKA) ➝ Taipei (TPE)</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Accommodation Info -->
+    <div class="info-card">
+        <div class="info-row">
+            <div class="info-icon">🏠</div>
+            <div class="info-details">
+                <div class="info-title">前島 Airbnb</div>
+                <div class="info-sub">那霸市前島 2-15-13 (2-chōme-15-13 Maejima)</div>
+                <a href="https://www.airbnb.com.tw/rooms/552680738785473114?viralityEntryPoint=1&s=76" target="_blank" class="header-link-btn">
+                    查看房源連結 ↗
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!-- Navigation Buttons (Scroll Anchors) -->
+<div class="nav-container">
+    <button class="day-btn" onclick="scrollToDay('day1')">
+        Day 1
+        <span class="date">2/27</span>
+    </button>
+    <button class="day-btn" onclick="scrollToDay('day2')">
+        Day 2
+        <span class="date">2/28</span>
+    </button>
+    <button class="day-btn" onclick="scrollToDay('day3')">
+        Day 3
+        <span class="date">3/01</span>
+    </button>
+    <button class="day-btn" onclick="scrollToDay('day4')">
+        Day 4
+        <span class="date">3/02</span>
+    </button>
+    <button class="day-btn" onclick="scrollToDay('day5')">
+        Day 5
+        <span class="date">3/03</span>
+    </button>
+    <!-- New Jump Buttons -->
+    <button class="day-btn" onclick="scrollToDay('section-food')">
+        美食
+        <span class="date">Food</span>
+    </button>
+    <button class="day-btn" onclick="scrollToDay('section-spots')">
+        景點
+        <span class="date">Spots</span>
+    </button>
+</div>
+
+
+<div class="content-container">
+
+
+    <!-- Day 1 Content -->
+    <div id="day1" class="day-content">
+        <div class="card-header">
+            <span class="day-label">DAY 1 - 2/27 (五)</span>
+            <span class="card-title-text">🌺 那霸抵達 & 頂級燒肉</span>
+        </div>
+        
+        <div class="timeline-item">
+            <span class="time-badge">12:30</span>
+            <h3 class="activity-title">✈️ 抵達那霸機場 (OKA)</h3>
+            <div class="activity-desc">
+                出關後，直接搭乘計程車前往國際通。
+                <div class="highlight">⚠️ 民宿 16:00 才能入住且無法寄物</div>
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Naha+Airport" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 20 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">13:30</span>
+            <h3 class="activity-title">🛅 寄放行李</h3>
+            <div class="activity-desc">
+                地點：沖繩國際通行李寄存 (T membership LOUNGE)
+                <br>解放雙手，輕鬆開始行程。
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=国際通り荷物預かり所T+membership+LOUNGE" target="_blank" class="map-btn">📍 行李寄存中心導航</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚶 步行約 5-8 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">14:00</span>
+            <h3 class="activity-title">🍽️ 牧志公設市場 & 鹽屋</h3>
+            <div class="activity-desc">
+                <span class="tag food">海鮮午餐</span> <span class="tag food">甜點</span><br>
+                1. 市場：1F 選海鮮，2F 現煮代客料理。<br>
+                2. 甜點：步行去吃「鹽屋」雪鹽霜淇淋 🍦。<br>
+                3. 備案：您發現的市場周邊美食。
+                <br>
+                <button class="ai-btn" onclick="askGemini('請推薦牧志市場必吃的海鮮種類和吃法')">✨ AI 推薦吃什麼？</button>
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Makishi+Public+Market" target="_blank" class="map-btn">📍 牧志市場</a>
+                <a href="https://maps.app.goo.gl/rsmVqkJYR2vg6m3u7" target="_blank" class="map-btn">📍 您的推薦餐廳</a>
+                <a href="https://maps.app.goo.gl/yPawfi2VhBGfbyHX6?g_st=ipc" target="_blank" class="map-btn">📍 鹽屋國際通</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 取行李往民宿 約 15 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">16:00</span>
+            <h3 class="activity-title">🏠 入住前島 Airbnb</h3>
+            <div class="activity-desc">
+                <span class="tag stay">住宿</span><br>
+                取回行李，前往民宿辦理入住。稍微午睡補眠，恢復體力。
+                <br>
+                <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿導航 (前島2-15-13)</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚶 步行約 10-15 分鐘 / 🚕 5 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">18:45</span>
+            <h3 class="activity-title">🛍️ Ryubo 琉貿百貨 (買蛋捲)</h3>
+            <div class="activity-desc">
+                <span class="tag shop">伴手禮</span><br>
+                前往 1F/B1 甜點區購買 <strong>Yoku Moku 蛋捲</strong>。<br>
+                買完剛好去旁邊吃晚餐，不用提著跑太遠。
+                <br>
+                <a href="https://maps.app.goo.gl/wJ1d8qR5yZ3z9pQ58" target="_blank" class="map-btn">📍 Ryubo 百貨導航</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚶 步行 3 分鐘至餐廳</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">19:15</span>
+            <h3 class="activity-title">🍽️ 晚餐：琉球的牛</h3>
+            <div class="activity-desc">
+                <span class="tag food">那霸久茂地店</span><br>
+                ★ 已預約 ★ <br>
+                頂級石垣牛與阿古豬烤肉，環境優雅舒適。
+                <br>
+                <button class="ai-btn" onclick="askGemini('琉球的牛有什麼必點的推薦菜色？幫我列出日文菜名')">✨ AI 推薦菜色</button>
+                <br>
+                <a href="https://maps.app.goo.gl/1KxWoCev2kPTU2bdA?g_st=ipc" target="_blank" class="map-btn">📍 餐廳導航 (久茂地別館)</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 10 分鐘 / 🚶 步行回民宿</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">21:30</span>
+            <h3 class="activity-title">🛍️ MaxValu 松山店 (24H超市)</h3>
+            <div class="activity-desc">
+                <span class="tag shop">生活補給</span><br>
+                離民宿步行僅 5-6 分鐘。<br>
+                回民宿前，先買好這幾天要喝的大瓶水、茶飲和水果宵夜 🛒。
+                <br>
+                <a href="https://maps.app.goo.gl/zhzEGrsdosH2ZKbu5?g_st=ipc" target="_blank" class="map-btn">📍 超市導航</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Day 2 Content -->
+    <div id="day2" class="day-content">
+        <div class="card-header">
+            <span class="day-label">DAY 2 - 2/28 (六)</span>
+            <span class="card-title-text">🌺 PARCO CITY & 壽喜燒</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">09:30</span>
+            <h3 class="activity-title">🚕 民宿出發</h3>
+            <div class="activity-desc">
+                準備好愉快的心情，前往 PARCO CITY。<br>
+                <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿位置</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 20 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">10:00</span>
+            <h3 class="activity-title">🛍️ PARCO CITY 開門進場</h3>
+            <div class="activity-desc">
+                <span class="tag shop">購物</span><br>
+                搭計程車直達。<br>
+                重點攻略：Uniqlo, GU, 松本清。<br>
+                <strong style="color:var(--primary-color)">★ 3COINS+plus</strong>
+                <br>
+                <button class="ai-btn" onclick="askGemini('沖繩 PARCO CITY 有什麼必買的伴手禮或特色商店？')">✨ AI 必買推薦</button>
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=San-A+Urasoe+West+Coast+PARCO+CITY" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">12:30</span>
+            <h3 class="activity-title">🍽️ 海景午餐</h3>
+            <div class="activity-desc">
+                <span class="tag view">海景</span><br>
+                直奔 2F/3F Food Hall 美食街，搶佔落地窗前第一排座位，看海吃午餐 🌊。
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 20 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">18:30</span>
+            <h3 class="activity-title">🏠 返回民宿</h3>
+            <div class="activity-desc">
+                搭計程車回前島，先放下滿滿的戰利品。
+                <br>
+                <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿導航</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 5-10 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">19:30</span>
+            <h3 class="activity-title">🍽️ 晚餐：酒喜膳 一喜喜 (Ikiki)</h3>
+            <div class="activity-desc">
+                <span class="tag food">必吃</span><br>
+                ★ 特別安排週六 (因週日公休) ★<br>
+                全包廂座位，必點「黑糖棉花糖壽喜燒」，享受頂級服務。
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Shukizen+Ikiki" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 10 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">21:30</span>
+            <h3 class="activity-title">🏠 返回民宿 & 明日準備</h3>
+            <div class="activity-desc">
+                整理今日戰利品，準備休息。<br>
+                <div class="highlight">⚠️ 明天要去瀨長島泡足湯，請記得先準備好「小毛巾」放入包包！</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Day 3 Content -->
+    <div id="day3" class="day-content">
+        <div class="card-header">
+            <span class="day-label">DAY 3 - 3/01 (日)</span>
+            <span class="card-title-text">🌺 鐘乳石 & 瀨長島夕陽</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">09:15</span>
+            <h3 class="activity-title">🚕 民宿出發</h3>
+            <div class="activity-desc">
+                前往南部玉泉洞，準備參觀鐘乳石。<br>
+                <div class="highlight">⚠️ 出門檢查：有帶毛巾嗎？建議穿「方便穿脫的鞋子」(足湯用)。</div>
+                <br>
+                <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿位置</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 40 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">10:00</span>
+            <h3 class="activity-title">📷 玉泉洞 (沖繩世界)</h3>
+            <div class="activity-desc">
+                <span class="tag view">景點</span><br>
+                搭計程車往南部。<br>
+                漫步於恆溫 21°C 的壯觀鐘乳石洞。
+                <br>
+                <button class="ai-btn" onclick="askGemini('玉泉洞裡面有什麼要注意的？大概要走多久？')">✨ AI 參觀攻略</button>
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+World+Gyokusendo" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 30 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">13:00</span>
+            <h3 class="activity-title">🍽️ 午餐：海景蝦蝦飯</h3>
+            <div class="activity-desc">
+                <span class="tag food">瀨長島必吃</span><br>
+                彷彿置身「長灘島」的度假氛圍！<br>
+                在 Umikaji Terrace 享用著名的蒜香蝦蝦飯，配上無敵海景。
+                <br>
+                <a href="https://www.myfunnow.com/products/3674216542123" target="_blank" class="map-btn">📍 預訂蝦蝦飯 (FunNow)</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Umikaji+Terrace+Senagajima" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">14:30</span>
+            <h3 class="activity-title">📷 續攤：足湯 & 下午茶</h3>
+            <div class="activity-desc">
+                <span class="tag view">放鬆</span><br>
+                吃飽後散步到「龍神之湯」泡免費足湯。<br>
+                一邊泡腳，一邊看那霸機場飛機起降與美麗海景 ✈️。
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 25 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">19:30</span>
+            <h3 class="activity-title">🍽️ 晚餐：琉家拉麵 (本店)</h3>
+            <div class="activity-desc">
+                <span class="tag food">在地美食</span><br>
+                招牌「黑焦蒜油豬骨拉麵」，麵條Q彈，蒜香濃郁。
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Ryuka+Ramen+Naha" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Day 4 Content -->
+    <div id="day4" class="day-content">
+        <div class="card-header">
+            <span class="day-label">DAY 4 - 3/02 (一)</span>
+            <span class="card-title-text">🌺 海灘祈福 & 古城文化</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">09:15</span>
+            <h3 class="activity-title">🚕 民宿出發</h3>
+            <div class="activity-desc">
+                輕鬆出發，前往附近的波之上海灘。<br>
+                <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿位置</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 5 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">09:30</span>
+            <h3 class="activity-title">📷 波之上海灘 & 波上宮</h3>
+            <div class="activity-desc">
+                <span class="tag view">市區海灘</span><br>
+                離民宿僅 5 分鐘車程。<br>
+                悠閒踩踩沙、看海，並在懸崖上的神社祈福 ⛩️。
+                <br>
+                <button class="ai-btn" onclick="askGemini('波上宮怎麼參拜？有什麼特別的御守推薦？')">✨ AI 參拜指南</button>
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Naminouegu+Shrine" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 20-25 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">11:30</span>
+            <h3 class="activity-title">📷 首里城 & 首里杜館午餐</h3>
+            <div class="activity-desc">
+                <span class="tag food">文化午餐</span><br>
+                在無障礙設施完善的「首里杜館」內，享用精緻的琉球料理套膳。
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Suimuikan+Restaurant" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚝 電車 / 🚕 計程車約 25-30 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">14:30</span>
+            <h3 class="activity-title">🛍️ 永旺那霸店 (AEON)</h3>
+            <div class="activity-desc">
+                <span class="tag shop">最後補貨</span><br>
+                搭單軌至小祿站。最後補齊 Uniqlo/3COINS。<br>
+                重點：在 1F 超市買日本草莓、水果帶回民宿吃 🍓。
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=AEON+Naha" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 15 分鐘</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">18:00</span>
+            <h3 class="activity-title">🏠 民宿水果派對 & 整理</h3>
+            <div class="activity-desc">
+                享用超市美食，整理行李。<br>
+                <div class="highlight">⚠️ 記得預約明早 05:45 的計程車</div>
+                <br>
+                <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿導航</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Day 5 Content -->
+    <div id="day5" class="day-content">
+        <div class="card-header">
+            <span class="day-label">DAY 5 - 3/03 (二)</span>
+            <span class="card-title-text">🌺 早安，順利返台</span>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">05:45</span>
+            <h3 class="activity-title">🚕 民宿出發前往機場</h3>
+            <div class="activity-desc">
+                搭乘預約好的計程車直達那霸機場 (約 15 分)。
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Naha+Airport" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
+
+        <div class="timeline-item">
+            <span class="time-badge">08:00</span>
+            <h3 class="activity-title">✈️ 班機起飛</h3>
+            <div class="activity-desc">
+                帶著滿滿的回憶與戰利品，平安回家 ✈️
+            </div>
+        </div>
+    </div>
+
+
+    <div class="end-trip">
+        ~ 旅程圓滿結束 ~
+    </div>
+
+
+</div>
+
+
+<!-- === Highlight Section 1: Food === -->
+<div id="section-food" class="section-wrapper">
+    <div class="section-header">
+        <div class="section-title">舌尖上的沖繩</div>
+        <div class="section-subtitle">GASTRONOMY</div>
+    </div>
+    <div class="vertical-list-container">
+        
+        <!-- Card: Ryukyu no Ushi -->
+        <div class="highlight-card">
+            <input type="file" id="file-ryukyu" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-ryukyu', 'okinawa_img_ryukyu')">
+            <label class="highlight-img-wrapper" for="file-ryukyu">
+                <img id="img-ryukyu" src="https://images.unsplash.com/photo-1594041680508-e3873d223f4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wagyu Beef" class="highlight-img">
+            </label>
+            <div class="card-content">
+                <h3 class="card-h3">琉球的牛 (久茂地店)</h3>
+                <span class="card-eng">PREMIUM WAGYU BBQ</span>
+                <p class="card-desc">沖繩必吃的頂級和牛燒肉，肉質入口即化，氛圍高雅舒適，是慶祝旅程開始的完美選擇。</p>
+                <a href="https://maps.app.goo.gl/1KxWoCev2kPTU2bdA?g_st=ipc" target="_blank" class="card-map-btn">📍 Google Maps</a>
+            </div>
+        </div>
+
+
+        <!-- Card: Shrimp Rice -->
+        <div class="highlight-card">
+            <input type="file" id="file-shrimp" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-shrimp', 'okinawa_img_shrimp')">
+            <label class="highlight-img-wrapper" for="file-shrimp">
+                <img id="img-shrimp" src="https://images.unsplash.com/photo-1599307767316-77e3fb6333a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Garlic Shrimp" class="highlight-img">
+            </label>
+            <div class="card-content">
+                <h3 class="card-h3">海景蝦蝦飯</h3>
+                <span class="card-eng">GARLIC SHRIMP</span>
+                <p class="card-desc">瀨長島的超人氣美食，濃郁的蒜香奶油搭配彈牙鮮蝦，佐以無敵海景，彷彿置身夏威夷。</p>
+                <a href="https://maps.app.goo.gl/rsmVqkJYR2vg6m3u7" target="_blank" class="card-map-btn">📍 Google Maps</a>
+            </div>
+        </div>
+
+
+        <!-- Card: Sukiyaki -->
+        <div class="highlight-card">
+            <input type="file" id="file-sukiyaki" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-sukiyaki', 'okinawa_img_sukiyaki')">
+            <label class="highlight-img-wrapper" for="file-sukiyaki">
+                <img id="img-sukiyaki" src="https://images.unsplash.com/photo-1608670356238-d6365440d6d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sukiyaki Wagyu" class="highlight-img">
+            </label>
+            <div class="card-content">
+                <h3 class="card-h3">酒喜膳 一喜喜</h3>
+                <span class="card-eng">COTTON CANDY SUKIYAKI</span>
+                <p class="card-desc">視覺與味覺的雙重享受！看著黑糖棉花糖在鍋中融化，包裹著頂級石垣牛，全包廂設計。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Shukizen+Ikiki" target="_blank" class="card-map-btn">📍 Google Maps</a>
+            </div>
+        </div>
+
+
+        <!-- Card: Blue Seal / Salt Ice Cream -->
+        <div class="highlight-card">
+            <input type="file" id="file-icecream" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-icecream', 'okinawa_img_icecream')">
+            <label class="highlight-img-wrapper" for="file-icecream">
+                <img id="img-icecream" src="https://images.unsplash.com/photo-1516550893923-37a49fc51b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salt Soft Serve Ice Cream" class="highlight-img">
+            </label>
+            <div class="card-content">
+                <h3 class="card-h3">鹽屋雪鹽霜淇淋</h3>
+                <span class="card-eng">SALT ICE CREAM</span>
+                <p class="card-desc">國際通必吃甜點，鹹甜交織的獨特風味，還可以自己撒上柚子鹽、抹茶鹽等十多種調味。</p>
+                <a href="https://maps.app.goo.gl/LudhJkWY7jw6okrJ6" target="_blank" class="card-map-btn">📍 Google Maps</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- === Highlight Section 2: Spots === -->
+<div id="section-spots" class="section-wrapper">
+    <div class="section-header">
+        <div class="section-title">沖繩蔚藍絕景</div>
+        <div class="section-subtitle">SCENERY & SPOTS</div>
+    </div>
+    <div class="vertical-list-container">
+        
+        <!-- Card: Umikaji Terrace -->
+        <div class="highlight-card">
+            <input type="file" id="file-umikaji" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-umikaji', 'okinawa_img_umikaji')">
+            <label class="highlight-img-wrapper" for="file-umikaji">
+                <img id="img-umikaji" src="https://images.unsplash.com/photo-1627915502202-692790930772?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Okinawa Sea" class="highlight-img">
+            </label>
+            <div class="card-content">
+                <h3 class="card-h3">瀨長島 Umikaji</h3>
+                <span class="card-eng">SEASIDE TERRACE</span>
+                <p class="card-desc">純白的階梯式建築映襯著藍天碧海，被譽為「沖繩小希臘」。看飛機起降、泡足湯的療癒聖地。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Umikaji+Terrace+Senagajima" target="_blank" class="card-map-btn">📍 Google Maps</a>
+            </div>
+        </div>
+
+
+        <!-- Card: PARCO CITY -->
+        <div class="highlight-card">
+            <input type="file" id="file-parco" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-parco', 'okinawa_img_parco')">
+            <label class="highlight-img-wrapper" for="file-parco">
+                <img id="img-parco" src="https://images.unsplash.com/photo-1519692933481-e162a57d6721?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mall Window View" class="highlight-img">
+            </label>
+            <div class="card-content">
+                <h3 class="card-h3">PARCO CITY</h3>
+                <span class="card-eng">OCEAN VIEW MALL</span>
+                <p class="card-desc">全沖繩最美的海景商場。在美食街落地窗前用餐，享受無邊際的蔚藍海景與購物樂趣。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=San-A+Urasoe+West+Coast+PARCO+CITY" target="_blank" class="card-map-btn">📍 Google Maps</a>
+            </div>
+        </div>
+
+
+        <!-- Card: Gyokusendo -->
+        <div class="highlight-card">
+            <input type="file" id="file-cave" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-cave', 'okinawa_img_cave')">
+            <label class="highlight-img-wrapper" for="file-cave">
+                <img id="img-cave" src="https://images.unsplash.com/photo-1516900448138-898720b936c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cave" class="highlight-img">
+            </label>
+            <div class="card-content">
+                <h3 class="card-h3">玉泉洞</h3>
+                <span class="card-eng">LIMESTONE CAVE</span>
+                <p class="card-desc">歷經 30 萬年形成的鐘乳石奇景，洞內恆溫舒適，步道平緩，是大自然的鬼斧神工。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+World+Gyokusendo" target="_blank" class="card-map-btn">📍 Google Maps</a>
+            </div>
+        </div>
+
+
+        <!-- Card: Shuri Castle -->
+        <div class="highlight-card">
+            <input type="file" id="file-shuri" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-shuri', 'okinawa_img_shuri')">
+            <label class="highlight-img-wrapper" for="file-shuri">
+                <img id="img-shuri" src="https://images.unsplash.com/photo-1599577937388-333dfd280a9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shuri Castle" class="highlight-img">
+            </label>
+            <div class="card-content">
+                <h3 class="card-h3">首里城公園</h3>
+                <span class="card-eng">WORLD HERITAGE</span>
+                <p class="card-desc">琉球王國的歷史象徵。漫步於紅瓦古城，在首里杜館享用宮廷料理，感受濃厚的文化底蘊。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Suimuikan+Restaurant" target="_blank" class="card-map-btn">📍 Google Maps</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Floating Chat Button -->
+<div class="chat-fab" onclick="toggleChat()">✨</div>
+
+
+<!-- Chat Window -->
+<div class="chat-modal" id="chatModal">
+    <div class="chat-header">
+        <span>沖繩小幫手</span>
+        <button class="chat-close" onclick="toggleChat()">×</button>
+    </div>
+    <div class="key-overlay" id="keyOverlay">
+        <h3>請輸入 Gemini API Key</h3>
+        <p style="font-size:12px; margin-bottom:15px; color:#666;">
+            您的 Key 僅儲存在此設備瀏覽器中<br>
+            不會上傳到任何伺服器，安全無虞。
+        </p>
+        <input type="password" id="userApiKey" class="key-input" placeholder="AIza...">
+        <button class="save-key-btn" onclick="saveApiKey()">開始使用</button>
+        <div style="margin-top:10px; font-size:11px;">
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#007AFF;">取得免費 API Key</a>
+        </div>
+    </div>
+
+
+    <div class="chat-messages" id="chatMessages">
+        <div class="message bot">
+            哈囉！我是您的沖繩旅遊助手 👋<br>
+            有什麼我可以幫您的嗎？<br>
+            例如：
+            <ul>
+                <li>「幫我翻譯這句日文」</li>
+                <li>「附近有什麼好吃的？」</li>
+                <li>「天氣不好怎麼辦？」</li>
+            </ul>
+        </div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" class="chat-input" id="userInput" placeholder="輸入問題..." onkeypress="handleKeyPress(event)">
+        <button class="chat-send" onclick="sendMessage()">➤</button>
+    </div>
+</div>
+
+
+<footer>
+    Designed for 2026 Okinawa Family Trip 🐢
+    <button class="reset-btn" onclick="resetImages()">重置所有照片</button>
+    <button class="reset-btn" onclick="clearApiKey()">重置 API Key</button>
+</footer>
+
+
+<script>
+    // --- Scroll Function ---
+    function scrollToDay(dayId) {
+        const element = document.getElementById(dayId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            
+            const buttons = document.querySelectorAll('.day-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+        }
+    }
+
+
+    // --- Intersection Observer (Active Tab State) ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load saved images first
+        loadSavedImages();
+        
+        // Check for API Key
+        checkApiKey();
+
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    const buttons = document.querySelectorAll('.day-btn');
+                    buttons.forEach(btn => {
+                        btn.classList.remove('active');
+                        // Match button onclick with section id
+                        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(id)) {
+                            btn.classList.add('active');
+                            // Scroll nav to visible
+                            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        }
+                    });
+                }
+            });
+        }, {
+            rootMargin: '-20% 0px -60% 0px' 
+        });
+
+
+        document.querySelectorAll('.day-content, .section-wrapper').forEach(section => {
+            observer.observe(section);
+        });
+    });
+
+
+    // --- Image Upload & LocalStorage Logic ---
+    function updateImage(input, imgId, storageKey) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const base64String = e.target.result;
+                // 1. Update visual
+                document.getElementById(imgId).src = base64String;
+                // 2. Save to LocalStorage
+                try {
+                    localStorage.setItem(storageKey, base64String);
+                } catch (e) {
+                    console.error("LocalStorage full or error:", e);
+                    alert("圖片太大無法儲存，但目前瀏覽可以顯示。");
+                }
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+    function loadSavedImages() {
+        const images = [
+            { id: 'img-ryukyu', key: 'okinawa_img_ryukyu' },
+            { id: 'img-shrimp', key: 'okinawa_img_shrimp' },
+            { id: 'img-sukiyaki', key: 'okinawa_img_sukiyaki' },
+            { id: 'img-icecream', key: 'okinawa_img_icecream' },
+            { id: 'img-umikaji', key: 'okinawa_img_umikaji' },
+            { id: 'img-parco', key: 'okinawa_img_parco' },
+            { id: 'img-cave', key: 'okinawa_img_cave' },
+            { id: 'img-shuri', key: 'okinawa_img_shuri' }
+        ];
+
+
+        images.forEach(img => {
+            const savedData = localStorage.getItem(img.key);
+            if (savedData) {
+                const imgElement = document.getElementById(img.id);
+                if (imgElement) {
+                    imgElement.src = savedData;
+                }
+            }
+        });
+    }
+
+
+    function resetImages() {
+        if(confirm('確定要重置所有照片回預設值嗎？')) {
+            // Remove image keys only
+            Object.keys(localStorage).forEach(key => {
+                if(key.startsWith('okinawa_img_')) localStorage.removeItem(key);
+            });
+            location.reload();
+        }
+    }
+
+
+    // --- AI Chat Logic (BYOK - Bring Your Own Key) ---
+    const chatModal = document.getElementById('chatModal');
+    const chatMessages = document.getElementById('chatMessages');
+    const userInput = document.getElementById('userInput');
+    const keyOverlay = document.getElementById('keyOverlay');
+    
+    let apiKey = "";
+
+
+    function toggleChat() {
+        chatModal.style.display = chatModal.style.display === 'flex' ? 'none' : 'flex';
+        checkApiKey();
+    }
+
+
+    function checkApiKey() {
+        const savedKey = localStorage.getItem('user_gemini_key');
+        if (savedKey) {
+            apiKey = savedKey;
+            keyOverlay.style.display = 'none';
+        } else {
+            keyOverlay.style.display = 'flex';
+        }
+    }
+
+
+    function saveApiKey() {
+        const inputKey = document.getElementById('userApiKey').value.trim();
+        if (inputKey) {
+            localStorage.setItem('user_gemini_key', inputKey);
+            apiKey = inputKey;
+            keyOverlay.style.display = 'none';
+            alert('API Key 已儲存！您可以開始使用 AI 功能了。');
+        } else {
+            alert('請輸入有效的 API Key');
+        }
+    }
+
+
+    function clearApiKey() {
+        if(confirm('確定要清除儲存的 API Key 嗎？')) {
+            localStorage.removeItem('user_gemini_key');
+            apiKey = "";
+            alert('API Key 已清除。下次使用 AI 功能需重新輸入。');
+        }
+    }
+
+
+    function askGemini(question) {
+        toggleChat();
+        userInput.value = question;
+        sendMessage();
+    }
+
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') sendMessage();
+    }
+
+
+    async function sendMessage() {
+        if (!apiKey) {
+            alert('請先輸入 API Key 才能傳送訊息');
+            return;
+        }
+
+
+        const text = userInput.value.trim();
+        if (!text) return;
+
+
+        // Add User Message
+        appendMessage('user', text);
+        userInput.value = '';
+
+
+        // Show Loading
+        const loadingId = appendMessage('bot', '<span class="typing-indicator">思考中...</span>');
+
+
+        try {
+            // Call Gemini API
+            const response = await callGeminiAPI(text);
+            
+            // Remove loading and show response
+            const loadingMsg = document.getElementById(loadingId);
+            if (loadingMsg) loadingMsg.remove();
+            
+            appendMessage('bot', response);
+
+
+        } catch (error) {
+            console.error(error);
+            const loadingMsg = document.getElementById(loadingId);
+            if (loadingMsg) loadingMsg.remove();
+            appendMessage('bot', '發生錯誤，請檢查您的 API Key 是否正確，或稍後再試。');
+        }
+    }
+
+
+    function appendMessage(sender, html) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${sender}`;
+        msgDiv.id = `msg-${Date.now()}`;
+        msgDiv.innerHTML = html;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return msgDiv.id;
+    }
+
+
+    async function callGeminiAPI(prompt) {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        
+        const systemInstruction = `
+            You are a helpful travel guide for a family trip to Okinawa. 
+            The family is staying in Maejima, Naha. 
+            They are visiting spots like Ryukyu no Ushi, PARCO CITY, Gyokusendo, Senagajima, etc. 
+            Answer their questions about the itinerary, provide Japanese translations for ordering food or asking directions, and give cultural tips. 
+            Keep answers concise, friendly, and in Traditional Chinese.
+        `;
+
+
+        const data = {
+            contents: [{
+                role: "user",
+                parts: [{ text: systemInstruction + "\n\nUser Question: " + prompt }]
+            }]
+        };
+
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+
+        if (!response.ok) {
+            throw new Error(`API Error: ${response.status}`);
+        }
+
+
+        const result = await response.json();
+        return result.candidates[0].content.parts[0].text;
+    }
+
+
+</script>
+
+
+</body>
+</html>
