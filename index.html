@@ -210,14 +210,13 @@
             scroll-margin-top: 90px; /* Adjusted for nav height */
         }
 
-        /* --- Card & Timeline Design (Updated for Day Badge) --- */
+        /* --- Card & Timeline Design --- */
         .card-header {
             background: #fff;
             padding: 15px 18px;
             border-radius: 16px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             margin-bottom: 25px;
-            /* Changed to column for stacked layout */
             display: flex;
             flex-direction: column; 
             align-items: flex-start;
@@ -226,11 +225,10 @@
         }
         
         .card-header::before {
-            display: none; /* Hide pseudo-element, emoji is in text */
+            display: none; 
         }
 
         .day-label {
-            /* Changed from absolute to static for flow layout */
             position: static;
             font-size: 11px;
             font-weight: 800;
@@ -371,6 +369,8 @@
             text-decoration: none;
             transition: all 0.2s;
             box-shadow: 0 3px 8px rgba(38, 166, 154, 0.3);
+            position: relative;
+            z-index: 5; 
         }
         
         .map-btn:active {
@@ -436,30 +436,12 @@
             position: relative;
         }
 
-        /* * IMPORTANT: Using <label> to wrap image for file input click. */
         .highlight-img-wrapper {
-            display: block; /* Important for label */
+            display: block;
             height: 200px;
             width: 100%;
             overflow: hidden;
             position: relative;
-            cursor: pointer;
-        }
-
-        /* Overlay text */
-        .highlight-img-wrapper::after {
-            content: '📷 點擊換圖 (會自動儲存)';
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 12px;
-            backdrop-filter: blur(2px);
-            opacity: 0.9;
-            pointer-events: none; /* Let click pass through */
         }
 
         .highlight-img {
@@ -499,33 +481,23 @@
         .card-map-btn {
             display: block;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             text-align: center;
             background: #fff;
             color: var(--primary-color);
-            border: 1px solid var(--primary-color);
+            border: 2px solid var(--primary-color);
             border-radius: 12px;
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
             transition: all 0.2s;
+            position: relative;
+            z-index: 10;
         }
 
         .card-map-btn:active {
             background: var(--primary-light);
-        }
-
-        /* --- Reset Button for Demo --- */
-        .reset-btn {
-            display: block;
-            margin: 20px auto;
-            background: transparent;
-            border: 1px dashed #999;
-            color: #999;
-            padding: 5px 10px;
-            border-radius: 10px;
-            font-size: 10px;
-            cursor: pointer;
+            transform: scale(0.98);
         }
 
     </style>
@@ -793,7 +765,7 @@
                 ★ 特別安排週六 (因週日公休) ★<br>
                 全包廂座位，必點「黑糖棉花糖壽喜燒」，享受頂級服務。
                 <br>
-                <a href="https://www.google.com/maps/search/?api=1&query=Shukizen+Ikiki" target="_blank" class="map-btn">📍 Google 導航</a>
+                <a href="https://maps.app.goo.gl/fvuENh8C9AW98idi6?g_st=ipc" target="_blank" class="map-btn">📍 Google 導航</a>
             </div>
         </div>
 
@@ -856,7 +828,7 @@
                 在 Umikaji Terrace 享用著名的蒜香蝦蝦飯，配上無敵海景。
                 <br>
                 <a href="https://www.myfunnow.com/products/3674216542123" target="_blank" class="map-btn">📍 預訂蝦蝦飯 (FunNow)</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Umikaji+Terrace+Senagajima" target="_blank" class="map-btn">📍 Google 導航</a>
+                <a href="https://maps.app.goo.gl/46bnYsKNn7vcnxFx7?g_st=ipc" target="_blank" class="map-btn">📍 Google 導航</a>
             </div>
         </div>
 
@@ -1007,50 +979,59 @@
         
         <!-- Card: Ryukyu no Ushi -->
         <div class="highlight-card">
-            <input type="file" id="file-ryukyu" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-ryukyu', 'okinawa_img_ryukyu')">
-            <label class="highlight-img-wrapper" for="file-ryukyu">
+            <div class="highlight-img-wrapper">
                 <img id="img-ryukyu" src="https://images.unsplash.com/photo-1594041680508-e3873d223f4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wagyu Beef" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">琉球的牛 (久茂地店)</h3>
                 <span class="card-eng">PREMIUM WAGYU BBQ</span>
                 <p class="card-desc">沖繩必吃的頂級和牛燒肉，肉質入口即化，氛圍高雅舒適，是慶祝旅程開始的完美選擇。</p>
-                <a href="https://maps.app.goo.gl/1KxWoCev2kPTU2bdA?g_st=ipc" target="_blank" class="card-map-btn">📍 Google Maps</a>
+                <a href="https://plumpyblog.com/ryukyu-no-ushi-naha/" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
             </div>
         </div>
 
         <!-- Card: Shrimp Rice -->
         <div class="highlight-card">
-            <input type="file" id="file-shrimp" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-shrimp', 'okinawa_img_shrimp')">
-            <label class="highlight-img-wrapper" for="file-shrimp">
+            <div class="highlight-img-wrapper">
                 <img id="img-shrimp" src="https://images.unsplash.com/photo-1599307767316-77e3fb6333a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Garlic Shrimp" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">海景蝦蝦飯</h3>
                 <span class="card-eng">GARLIC SHRIMP</span>
                 <p class="card-desc">瀨長島的超人氣美食，濃郁的蒜香奶油搭配彈牙鮮蝦，佐以無敵海景，彷彿置身夏威夷。</p>
-                <a href="https://maps.app.goo.gl/rsmVqkJYR2vg6m3u7" target="_blank" class="card-map-btn">📍 Google Maps</a>
+                <a href="https://boo2k.com/%E7%80%A8%E9%95%B7%E5%B3%B6%E7%BE%8E%E9%A3%9F%EF%BC%8Cby%E3%83%BBthe%E3%83%BBshrimp%E8%9D%A6%E8%9D%A6%E9%A3%AF%EF%BC%8C%E8%97%8D%E5%A4%A9%E3%80%81%E9%A3%9B%E6%A9%9F%E3%80%81%E6%B5%B7%E6%99%AF%E4%B8%80/" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
+            </div>
+        </div>
+
+         <!-- Card: Shishiya -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img id="img-shishiya" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shishiya Wagyu" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">立吞肉屋 ししや</h3>
+                <span class="card-eng">STANDING WAGYU BAR</span>
+                <p class="card-desc">牧志市場旁的隱藏版美食！主打高品質黑毛和牛與阿古豬，以立吞（站著吃）的形式提供高 CP 值的現烤肉料理，氣氛熱鬧道地。</p>
+                <a href="https://shin.tw/okinawa-shishiya/" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
             </div>
         </div>
 
         <!-- Card: Sukiyaki -->
         <div class="highlight-card">
-            <input type="file" id="file-sukiyaki" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-sukiyaki', 'okinawa_img_sukiyaki')">
-            <label class="highlight-img-wrapper" for="file-sukiyaki">
+            <div class="highlight-img-wrapper">
                 <img id="img-sukiyaki" src="https://images.unsplash.com/photo-1608670356238-d6365440d6d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sukiyaki Wagyu" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">酒喜膳 一喜喜</h3>
                 <span class="card-eng">COTTON CANDY SUKIYAKI</span>
                 <p class="card-desc">視覺與味覺的雙重享受！看著黑糖棉花糖在鍋中融化，包裹著頂級石垣牛，全包廂設計。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Shukizen+Ikiki" target="_blank" class="card-map-btn">📍 Google Maps</a>
+                <a href="https://anise.tw/281181" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
             </div>
         </div>
 
         <!-- Card: Blue Seal / Salt Ice Cream -->
         <div class="highlight-card">
-            <input type="file" id="file-icecream" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-icecream', 'okinawa_img_icecream')">
-            <label class="highlight-img-wrapper" for="file-icecream">
+            <div class="highlight-img-wrapper">
                 <!-- Updated Image to a new soft serve photo based on user request -->
                 <img id="img-icecream" src="https://images.unsplash.com/photo-1516550893923-37a49fc51b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salt Soft Serve Ice Cream" class="highlight-img">
             </div>
@@ -1058,7 +1039,7 @@
                 <h3 class="card-h3">鹽屋雪鹽霜淇淋</h3>
                 <span class="card-eng">SALT ICE CREAM</span>
                 <p class="card-desc">國際通必吃甜點，鹹甜交織的獨特風味，還可以自己撒上柚子鹽、抹茶鹽等十多種調味。</p>
-                <a href="https://maps.app.goo.gl/LudhJkWY7jw6okrJ6" target="_blank" class="card-map-btn">📍 Google Maps</a>
+                <a href="https://bobbyfun.tw/2023-05-01-2340/" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
             </div>
         </div>
     </div>
@@ -1074,57 +1055,53 @@
         
         <!-- Card: Umikaji Terrace -->
         <div class="highlight-card">
-            <input type="file" id="file-umikaji" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-umikaji', 'okinawa_img_umikaji')">
-            <label class="highlight-img-wrapper" for="file-umikaji">
+            <div class="highlight-img-wrapper">
                 <img id="img-umikaji" src="https://images.unsplash.com/photo-1627915502202-692790930772?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Okinawa Sea" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">瀨長島 Umikaji</h3>
                 <span class="card-eng">SEASIDE TERRACE</span>
                 <p class="card-desc">純白的階梯式建築映襯著藍天碧海，被譽為「沖繩小希臘」。看飛機起降、泡足湯的療癒聖地。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Umikaji+Terrace+Senagajima" target="_blank" class="card-map-btn">📍 Google Maps</a>
+                <a href="https://okinawa.letsgojp.com/archives/405500/" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
             </div>
         </div>
 
         <!-- Card: PARCO CITY -->
         <div class="highlight-card">
-            <input type="file" id="file-parco" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-parco', 'okinawa_img_parco')">
-            <label class="highlight-img-wrapper" for="file-parco">
+            <div class="highlight-img-wrapper">
                 <img id="img-parco" src="https://images.unsplash.com/photo-1519692933481-e162a57d6721?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mall Window View" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">PARCO CITY</h3>
                 <span class="card-eng">OCEAN VIEW MALL</span>
                 <p class="card-desc">全沖繩最美的海景商場。在美食街落地窗前用餐，享受無邊際的蔚藍海景與購物樂趣。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=San-A+Urasoe+West+Coast+PARCO+CITY" target="_blank" class="card-map-btn">📍 Google Maps</a>
+                <a href="https://okinawa.letsgojp.com/archives/543066/" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
             </div>
         </div>
 
         <!-- Card: Gyokusendo -->
         <div class="highlight-card">
-            <input type="file" id="file-cave" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-cave', 'okinawa_img_cave')">
-            <label class="highlight-img-wrapper" for="file-cave">
+            <div class="highlight-img-wrapper">
                 <img id="img-cave" src="https://images.unsplash.com/photo-1516900448138-898720b936c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cave" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">玉泉洞</h3>
                 <span class="card-eng">LIMESTONE CAVE</span>
                 <p class="card-desc">歷經 30 萬年形成的鐘乳石奇景，洞內恆溫舒適，步道平緩，是大自然的鬼斧神工。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+World+Gyokusendo" target="_blank" class="card-map-btn">📍 Google Maps</a>
+                <a href="https://okinawa.letsgojp.com/archives/757370/" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
             </div>
         </div>
 
         <!-- Card: Shuri Castle -->
         <div class="highlight-card">
-            <input type="file" id="file-shuri" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-shuri', 'okinawa_img_shuri')">
-            <label class="highlight-img-wrapper" for="file-shuri">
+            <div class="highlight-img-wrapper">
                 <img id="img-shuri" src="https://images.unsplash.com/photo-1599577937388-333dfd280a9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shuri Castle" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">首里城公園</h3>
                 <span class="card-eng">WORLD HERITAGE</span>
                 <p class="card-desc">琉球王國的歷史象徵。漫步於紅瓦古城，在首里杜館享用宮廷料理，感受濃厚的文化底蘊。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Suimuikan+Restaurant" target="_blank" class="card-map-btn">📍 Google Maps</a>
+                <a href="https://okinawa.letsgojp.com/archives/14911/" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
             </div>
         </div>
     </div>
@@ -1132,7 +1109,6 @@
 
 <footer>
     Designed for 2026 Okinawa Family Trip 🐢
-    <button class="reset-btn" onclick="resetImages()">重置所有照片</button>
 </footer>
 
 <script>
@@ -1150,61 +1126,6 @@
             // Note: This simple implementation might need event.target logic in a real app,
             // but for this inline handler, we can rely on user click visually.
             // For better UX, we'd use IntersectionObserver to update buttons on scroll.
-        }
-    }
-
-    // Image Upload Handler
-    function updateImage(input, imgId, storageKey) {
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                const base64String = e.target.result;
-                // 1. Update visual
-                document.getElementById(imgId).src = base64String;
-                // 2. Save to LocalStorage
-                try {
-                    localStorage.setItem(storageKey, base64String);
-                } catch (e) {
-                    console.error("LocalStorage full or error:", e);
-                    alert("圖片太大無法儲存，但目前瀏覽可以顯示。");
-                }
-            }
-            
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    function loadSavedImages() {
-        const images = [
-            { id: 'img-ryukyu', key: 'okinawa_img_ryukyu' },
-            { id: 'img-shrimp', key: 'okinawa_img_shrimp' },
-            { id: 'img-sukiyaki', key: 'okinawa_img_sukiyaki' },
-            { id: 'img-icecream', key: 'okinawa_img_icecream' },
-            { id: 'img-umikaji', key: 'okinawa_img_umikaji' },
-            { id: 'img-parco', key: 'okinawa_img_parco' },
-            { id: 'img-cave', key: 'okinawa_img_cave' },
-            { id: 'img-shuri', key: 'okinawa_img_shuri' }
-        ];
-
-        images.forEach(img => {
-            const savedData = localStorage.getItem(img.key);
-            if (savedData) {
-                const imgElement = document.getElementById(img.id);
-                if (imgElement) {
-                    imgElement.src = savedData;
-                }
-            }
-        });
-    }
-
-    function resetImages() {
-        if(confirm('確定要重置所有照片回預設值嗎？')) {
-            // Remove image keys only
-            Object.keys(localStorage).forEach(key => {
-                if(key.startsWith('okinawa_img_')) localStorage.removeItem(key);
-            });
-            location.reload();
         }
     }
 
@@ -1237,4 +1158,3 @@
 
 </body>
 </html>
-
