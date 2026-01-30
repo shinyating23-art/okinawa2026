@@ -210,13 +210,14 @@
             scroll-margin-top: 90px; /* Adjusted for nav height */
         }
 
-        /* --- Card & Timeline Design --- */
+        /* --- Card & Timeline Design (Updated for Day Badge) --- */
         .card-header {
             background: #fff;
             padding: 15px 18px;
             border-radius: 16px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            /* Changed to column for stacked layout */
             display: flex;
             flex-direction: column; 
             align-items: flex-start;
@@ -225,10 +226,11 @@
         }
         
         .card-header::before {
-            display: none; 
+            display: none; /* Hide pseudo-element, emoji is in text */
         }
 
         .day-label {
+            /* Changed from absolute to static for flow layout */
             position: static;
             font-size: 11px;
             font-weight: 800;
@@ -250,6 +252,30 @@
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+
+        /* --- Weather Alert Widget --- */
+        .weather-alert {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(120deg, #81D4FA 0%, #29B6F6 100%);
+            color: #FFFFFF;
+            padding: 12px 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3);
+            font-weight: 700;
+            font-size: 14px;
+            position: relative;
+            z-index: 5;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        }
+        
+        .weather-alert:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 5px rgba(41, 182, 246, 0.3);
         }
 
         .timeline-item {
@@ -370,7 +396,9 @@
             transition: all 0.2s;
             box-shadow: 0 3px 8px rgba(38, 166, 154, 0.3);
             position: relative;
-            z-index: 5; 
+            z-index: 5; /* Ensure it's above other elements */
+            -webkit-user-select: none; /* Improve touch feel */
+            user-select: none;
         }
         
         .map-btn:active {
@@ -436,12 +464,30 @@
             position: relative;
         }
 
+        /* * IMPORTANT: Using <label> to wrap image for file input click. */
         .highlight-img-wrapper {
-            display: block;
+            display: block; /* Important for label */
             height: 200px;
             width: 100%;
             overflow: hidden;
             position: relative;
+            cursor: pointer;
+        }
+
+        /* Overlay text */
+        .highlight-img-wrapper::after {
+            content: '📷 點擊換圖 (會自動儲存)';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            backdrop-filter: blur(2px);
+            opacity: 0.9;
+            pointer-events: none; /* Let click pass through */
         }
 
         .highlight-img {
@@ -481,23 +527,33 @@
         .card-map-btn {
             display: block;
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             text-align: center;
             background: #fff;
             color: var(--primary-color);
-            border: 2px solid var(--primary-color);
+            border: 1px solid var(--primary-color);
             border-radius: 12px;
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
             transition: all 0.2s;
-            position: relative;
-            z-index: 10;
         }
 
         .card-map-btn:active {
             background: var(--primary-light);
-            transform: scale(0.98);
+        }
+
+        /* --- Reset Button for Demo --- */
+        .reset-btn {
+            display: block;
+            margin: 20px auto;
+            background: transparent;
+            border: 1px dashed #999;
+            color: #999;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 10px;
+            cursor: pointer;
         }
 
     </style>
@@ -587,6 +643,12 @@
             <span class="day-label">DAY 1 - 2/27 (五)</span>
             <span class="card-title-text">🌺 那霸抵達 & 頂級燒肉</span>
         </div>
+
+        <!-- Weather Widget -->
+        <a href="https://www.google.com/search?q=Okinawa+Naha+Weather" target="_blank" class="weather-alert">
+            <span>🌤️ 早安！點此查看今日天氣預報</span>
+            <span>➤</span>
+        </a>
         
         <div class="timeline-item">
             <span class="time-badge">12:30</span>
@@ -704,6 +766,12 @@
             <span class="card-title-text">🌺 PARCO CITY & 壽喜燒</span>
         </div>
 
+        <!-- Weather Widget -->
+        <a href="https://www.google.com/search?q=Okinawa+Naha+Weather" target="_blank" class="weather-alert">
+            <span>🌤️ 早安！點此查看今日天氣預報</span>
+            <span>➤</span>
+        </a>
+
         <div class="timeline-item">
             <span class="time-badge">09:30</span>
             <h3 class="activity-title">🚕 民宿出發</h3>
@@ -790,11 +858,19 @@
             <span class="card-title-text">🌺 鐘乳石 & 瀨長島夕陽</span>
         </div>
 
+        <!-- Weather Widget -->
+        <a href="https://www.google.com/search?q=Okinawa+Naha+Weather" target="_blank" class="weather-alert">
+            <span>🌤️ 早安！點此查看今日天氣預報</span>
+            <span>➤</span>
+        </a>
+
         <div class="timeline-item">
             <span class="time-badge">09:15</span>
             <h3 class="activity-title">🚕 民宿出發</h3>
             <div class="activity-desc">
                 前往南部玉泉洞，準備參觀鐘乳石。<br>
+                <div class="highlight">⚠️ 出門檢查：有帶毛巾嗎？建議穿「方便穿脫的鞋子」(足湯用)。</div>
+                <br>
                 <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿位置</a>
             </div>
         </div>
@@ -864,6 +940,12 @@
             <span class="day-label">DAY 4 - 3/02 (一)</span>
             <span class="card-title-text">🌺 海灘祈福 & 古城文化</span>
         </div>
+
+        <!-- Weather Widget -->
+        <a href="https://www.google.com/search?q=Okinawa+Naha+Weather" target="_blank" class="weather-alert">
+            <span>🌤️ 早安！點此查看今日天氣預報</span>
+            <span>➤</span>
+        </a>
 
         <div class="timeline-item">
             <span class="time-badge">09:15</span>
@@ -944,6 +1026,12 @@
             <span class="card-title-text">🌺 早安，順利返台</span>
         </div>
 
+        <!-- Weather Widget -->
+        <a href="https://www.google.com/search?q=Okinawa+Naha+Weather" target="_blank" class="weather-alert">
+            <span>🌤️ 早安！點此查看今日天氣預報</span>
+            <span>➤</span>
+        </a>
+
         <div class="timeline-item">
             <span class="time-badge">05:45</span>
             <h3 class="activity-title">🚕 民宿出發前往機場</h3>
@@ -979,9 +1067,10 @@
         
         <!-- Card: Ryukyu no Ushi -->
         <div class="highlight-card">
-            <div class="highlight-img-wrapper">
+            <input type="file" id="file-ryukyu" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-ryukyu', 'okinawa_img_ryukyu')">
+            <label class="highlight-img-wrapper" for="file-ryukyu">
                 <img id="img-ryukyu" src="https://images.unsplash.com/photo-1594041680508-e3873d223f4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wagyu Beef" class="highlight-img">
-            </div>
+            </label>
             <div class="card-content">
                 <h3 class="card-h3">琉球的牛 (久茂地店)</h3>
                 <span class="card-eng">PREMIUM WAGYU BBQ</span>
@@ -990,11 +1079,26 @@
             </div>
         </div>
 
+        <!-- Card: Ryubo Yoku Moku -->
+        <div class="highlight-card">
+            <input type="file" id="file-ryubo" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-ryubo', 'okinawa_img_ryubo')">
+            <label class="highlight-img-wrapper" for="file-ryubo">
+                <img id="img-ryubo" src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoku Moku Cookies" class="highlight-img">
+            </label>
+            <div class="card-content">
+                <h3 class="card-h3">Ryubo 琉貿百貨 (Yoku Moku)</h3>
+                <span class="card-eng">SOUVENIR & SWEETS</span>
+                <p class="card-desc">位於國際通入口的百貨公司，B1 甜點區必買 Yoku Moku 雪茄蛋捲，是送禮自用的最佳高級伴手禮。</p>
+                <a href="https://maps.app.goo.gl/wJ1d8qR5yZ3z9pQ58" target="_blank" class="card-map-btn">📍 Google Maps</a>
+            </div>
+        </div>
+
         <!-- Card: Shrimp Rice -->
         <div class="highlight-card">
-            <div class="highlight-img-wrapper">
+            <input type="file" id="file-shrimp" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-shrimp', 'okinawa_img_shrimp')">
+            <label class="highlight-img-wrapper" for="file-shrimp">
                 <img id="img-shrimp" src="https://images.unsplash.com/photo-1599307767316-77e3fb6333a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Garlic Shrimp" class="highlight-img">
-            </div>
+            </label>
             <div class="card-content">
                 <h3 class="card-h3">海景蝦蝦飯</h3>
                 <span class="card-eng">GARLIC SHRIMP</span>
@@ -1005,9 +1109,10 @@
 
          <!-- Card: Shishiya -->
         <div class="highlight-card">
-            <div class="highlight-img-wrapper">
+            <input type="file" id="file-shishiya" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-shishiya', 'okinawa_img_shishiya')">
+            <label class="highlight-img-wrapper" for="file-shishiya">
                 <img id="img-shishiya" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shishiya Wagyu" class="highlight-img">
-            </div>
+            </label>
             <div class="card-content">
                 <h3 class="card-h3">立吞肉屋 ししや</h3>
                 <span class="card-eng">STANDING WAGYU BAR</span>
@@ -1018,9 +1123,10 @@
 
         <!-- Card: Sukiyaki -->
         <div class="highlight-card">
-            <div class="highlight-img-wrapper">
+            <input type="file" id="file-sukiyaki" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-sukiyaki', 'okinawa_img_sukiyaki')">
+            <label class="highlight-img-wrapper" for="file-sukiyaki">
                 <img id="img-sukiyaki" src="https://images.unsplash.com/photo-1608670356238-d6365440d6d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sukiyaki Wagyu" class="highlight-img">
-            </div>
+            </label>
             <div class="card-content">
                 <h3 class="card-h3">酒喜膳 一喜喜</h3>
                 <span class="card-eng">COTTON CANDY SUKIYAKI</span>
@@ -1031,7 +1137,8 @@
 
         <!-- Card: Blue Seal / Salt Ice Cream -->
         <div class="highlight-card">
-            <div class="highlight-img-wrapper">
+            <input type="file" id="file-icecream" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-icecream', 'okinawa_img_icecream')">
+            <label class="highlight-img-wrapper" for="file-icecream">
                 <!-- Updated Image to a new soft serve photo based on user request -->
                 <img id="img-icecream" src="https://images.unsplash.com/photo-1516550893923-37a49fc51b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salt Soft Serve Ice Cream" class="highlight-img">
             </div>
@@ -1055,9 +1162,10 @@
         
         <!-- Card: Umikaji Terrace -->
         <div class="highlight-card">
-            <div class="highlight-img-wrapper">
+            <input type="file" id="file-umikaji" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-umikaji', 'okinawa_img_umikaji')">
+            <label class="highlight-img-wrapper" for="file-umikaji">
                 <img id="img-umikaji" src="https://images.unsplash.com/photo-1627915502202-692790930772?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Okinawa Sea" class="highlight-img">
-            </div>
+            </label>
             <div class="card-content">
                 <h3 class="card-h3">瀨長島 Umikaji</h3>
                 <span class="card-eng">SEASIDE TERRACE</span>
@@ -1068,9 +1176,10 @@
 
         <!-- Card: PARCO CITY -->
         <div class="highlight-card">
-            <div class="highlight-img-wrapper">
+            <input type="file" id="file-parco" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-parco', 'okinawa_img_parco')">
+            <label class="highlight-img-wrapper" for="file-parco">
                 <img id="img-parco" src="https://images.unsplash.com/photo-1519692933481-e162a57d6721?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mall Window View" class="highlight-img">
-            </div>
+            </label>
             <div class="card-content">
                 <h3 class="card-h3">PARCO CITY</h3>
                 <span class="card-eng">OCEAN VIEW MALL</span>
@@ -1081,9 +1190,10 @@
 
         <!-- Card: Gyokusendo -->
         <div class="highlight-card">
-            <div class="highlight-img-wrapper">
+            <input type="file" id="file-cave" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-cave', 'okinawa_img_cave')">
+            <label class="highlight-img-wrapper" for="file-cave">
                 <img id="img-cave" src="https://images.unsplash.com/photo-1516900448138-898720b936c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cave" class="highlight-img">
-            </div>
+            </label>
             <div class="card-content">
                 <h3 class="card-h3">玉泉洞</h3>
                 <span class="card-eng">LIMESTONE CAVE</span>
@@ -1094,9 +1204,10 @@
 
         <!-- Card: Shuri Castle -->
         <div class="highlight-card">
-            <div class="highlight-img-wrapper">
+            <input type="file" id="file-shuri" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-shuri', 'okinawa_img_shuri')">
+            <label class="highlight-img-wrapper" for="file-shuri">
                 <img id="img-shuri" src="https://images.unsplash.com/photo-1599577937388-333dfd280a9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shuri Castle" class="highlight-img">
-            </div>
+            </label>
             <div class="card-content">
                 <h3 class="card-h3">首里城公園</h3>
                 <span class="card-eng">WORLD HERITAGE</span>
@@ -1109,6 +1220,7 @@
 
 <footer>
     Designed for 2026 Okinawa Family Trip 🐢
+    <button class="reset-btn" onclick="resetImages()">重置所有照片</button>
 </footer>
 
 <script>
@@ -1126,6 +1238,63 @@
             // Note: This simple implementation might need event.target logic in a real app,
             // but for this inline handler, we can rely on user click visually.
             // For better UX, we'd use IntersectionObserver to update buttons on scroll.
+        }
+    }
+
+    // Image Upload Handler
+    function updateImage(input, imgId, storageKey) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const base64String = e.target.result;
+                // 1. Update visual
+                document.getElementById(imgId).src = base64String;
+                // 2. Save to LocalStorage
+                try {
+                    localStorage.setItem(storageKey, base64String);
+                } catch (e) {
+                    console.error("LocalStorage full or error:", e);
+                    alert("圖片太大無法儲存，但目前瀏覽可以顯示。");
+                }
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function loadSavedImages() {
+        const images = [
+            { id: 'img-ryukyu', key: 'okinawa_img_ryukyu' },
+            { id: 'img-ryubo', key: 'okinawa_img_ryubo' },
+            { id: 'img-shrimp', key: 'okinawa_img_shrimp' },
+            { id: 'img-sukiyaki', key: 'okinawa_img_sukiyaki' },
+            { id: 'img-icecream', key: 'okinawa_img_icecream' },
+            { id: 'img-umikaji', key: 'okinawa_img_umikaji' },
+            { id: 'img-parco', key: 'okinawa_img_parco' },
+            { id: 'img-cave', key: 'okinawa_img_cave' },
+            { id: 'img-shuri', key: 'okinawa_img_shuri' },
+            { id: 'img-shishiya', key: 'okinawa_img_shishiya' }
+        ];
+
+        images.forEach(img => {
+            const savedData = localStorage.getItem(img.key);
+            if (savedData) {
+                const imgElement = document.getElementById(img.id);
+                if (imgElement) {
+                    imgElement.src = savedData;
+                }
+            }
+        });
+    }
+
+    function resetImages() {
+        if(confirm('確定要重置所有照片回預設值嗎？')) {
+            // Remove image keys only
+            Object.keys(localStorage).forEach(key => {
+                if(key.startsWith('okinawa_img_')) localStorage.removeItem(key);
+            });
+            location.reload();
         }
     }
 
