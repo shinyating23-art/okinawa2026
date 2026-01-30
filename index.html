@@ -35,6 +35,7 @@
             padding-bottom: 60px; /* Space for footer */
             background-image: radial-gradient(#FFCCBC 1px, transparent 1px);
             background-size: 20px 20px;
+            cursor: pointer; 
         }
 
         /* --- Header Section --- */
@@ -66,6 +67,96 @@
             font-weight: 500;
             margin-bottom: 20px;
         }
+
+        /* --- Weather Widget (Fixed & Integrated) --- */
+        .weather-widget {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 15px 20px;
+            color: white;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .weather-widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .weather-location {
+            font-size: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .weather-link-btn {
+            font-size: 11px;
+            color: white;
+            background: rgba(255,255,255,0.25);
+            padding: 6px 12px;
+            border-radius: 15px;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: background 0.2s;
+            font-weight: 600;
+        }
+        
+        .weather-link-btn:active {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .weather-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .weather-temp {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .weather-desc {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .weather-icon-main {
+            font-size: 36px;
+        }
+
+        .weather-forecast {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .forecast-item {
+            text-align: center;
+            font-size: 11px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            padding: 5px 2px;
+            border-radius: 8px;
+        }
+        
+        .forecast-day { opacity: 0.9; font-weight: 500; }
+        .forecast-icon { font-size: 14px; margin: 1px 0; }
+        .forecast-temp { font-weight: 600; opacity: 0.9; }
 
         /* --- Info Card (Flight & Hotel) --- */
         .info-card {
@@ -216,22 +307,23 @@
             padding: 15px 18px;
             border-radius: 16px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            margin-bottom: 20px;
-            /* Changed to column for stacked layout */
+            margin-bottom: 25px;
             display: flex;
             flex-direction: column; 
             align-items: flex-start;
-            gap: 5px;
+            gap: 8px;
             position: relative;
         }
         
-        .card-header::before {
-            display: none; /* Hide pseudo-element, emoji is in text */
+        /* Header Top Row for Date and Weather Button */
+        .header-top-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
         }
 
         .day-label {
-            /* Changed from absolute to static for flow layout */
-            position: static;
             font-size: 11px;
             font-weight: 800;
             color: var(--accent-color);
@@ -240,8 +332,25 @@
             border-radius: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            display: inline-block;
-            margin-bottom: 2px;
+        }
+
+        .weather-check-btn {
+            font-size: 11px;
+            color: var(--primary-color);
+            background: #E0F2F1;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 137, 123, 0.2);
+            transition: background 0.2s;
+        }
+        
+        .weather-check-btn:active {
+            background: #B2DFDB;
         }
 
         .card-title-text {
@@ -249,33 +358,6 @@
             font-weight: 800;
             color: var(--primary-color);
             line-height: 1.3;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* --- Weather Alert Widget --- */
-        .weather-alert {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: linear-gradient(120deg, #81D4FA 0%, #29B6F6 100%);
-            color: #FFFFFF;
-            padding: 12px 15px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3);
-            font-weight: 700;
-            font-size: 14px;
-            position: relative;
-            z-index: 5;
-            text-shadow: 0 1px 1px rgba(0,0,0,0.1);
-        }
-        
-        .weather-alert:active {
-            transform: scale(0.98);
-            box-shadow: 0 2px 5px rgba(41, 182, 246, 0.3);
         }
 
         .timeline-item {
@@ -382,7 +464,43 @@
             border: 1px solid #FFCDD2;
         }
 
-        /* Map Button */
+        /* Tips Card Style */
+        .tips-card {
+            background: #FFF8E1;
+            border: 1px solid #FFECB3;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .tips-title {
+            color: #F57F17;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tips-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .tips-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #5D4037;
+            line-height: 1.5;
+        }
+        .tips-icon {
+            font-size: 18px;
+        }
+
+        /* Map Button (Standard) */
         .map-btn {
             display: inline-block;
             margin-top: 12px;
@@ -390,15 +508,14 @@
             font-weight: 600;
             color: #fff;
             background: linear-gradient(45deg, var(--primary-color), #4DB6AC);
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 20px;
             text-decoration: none;
             transition: all 0.2s;
             box-shadow: 0 3px 8px rgba(38, 166, 154, 0.3);
             position: relative;
-            z-index: 5; /* Ensure it's above other elements */
-            -webkit-user-select: none; /* Improve touch feel */
-            user-select: none;
+            z-index: 10;
+            cursor: pointer;
         }
         
         .map-btn:active {
@@ -464,37 +581,18 @@
             position: relative;
         }
 
-        /* * IMPORTANT: Using <label> to wrap image for file input click. */
         .highlight-img-wrapper {
-            display: block; /* Important for label */
+            display: block; 
             height: 200px;
             width: 100%;
             overflow: hidden;
             position: relative;
-            cursor: pointer;
-        }
-
-        /* Overlay text */
-        .highlight-img-wrapper::after {
-            content: '📷 點擊換圖 (會自動儲存)';
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 12px;
-            backdrop-filter: blur(2px);
-            opacity: 0.9;
-            pointer-events: none; /* Let click pass through */
         }
 
         .highlight-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.3s;
         }
 
         .card-content {
@@ -527,33 +625,24 @@
         .card-map-btn {
             display: block;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             text-align: center;
             background: #fff;
             color: var(--primary-color);
-            border: 1px solid var(--primary-color);
+            border: 2px solid var(--primary-color);
             border-radius: 12px;
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
             transition: all 0.2s;
+            position: relative;
+            z-index: 10;
+            cursor: pointer;
         }
 
         .card-map-btn:active {
             background: var(--primary-light);
-        }
-
-        /* --- Reset Button for Demo --- */
-        .reset-btn {
-            display: block;
-            margin: 20px auto;
-            background: transparent;
-            border: 1px dashed #999;
-            color: #999;
-            padding: 5px 10px;
-            border-radius: 10px;
-            font-size: 10px;
-            cursor: pointer;
+            transform: scale(0.98);
         }
 
     </style>
@@ -563,6 +652,27 @@
 <header>
     <h1>Okinawa Trip 🌊</h1>
     <div class="subtitle">與家人的慢活時光</div>
+
+    <!-- Weather Widget (Dynamic JS) -->
+    <div class="weather-widget" id="weatherWidget">
+        <div class="weather-widget-header">
+            <div class="weather-location">📍 那霸市 Naha</div>
+            <a href="https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E9%82%A3%E9%9C%B8%E5%A4%A9%E6%B0%A3&rlz=1C1CHBF_zh-TWTW972TW972&oq=%E6%B2%96%E7%B9%A9%E9%82%A3%E9%9C%B8%E5%A4%A9%E6%B0%A3&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIKCAUQABiABBiiBDIHCAYQABjvBdIBCTg2NTJqMGoxNagCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" class="weather-link-btn">🔍 完整預報</a>
+        </div>
+        
+        <!-- Current Weather -->
+        <div class="weather-main">
+            <div>
+                <div class="weather-desc" id="currentDesc">載入中...</div>
+                <div class="weather-temp" id="currentTemp">--°C</div>
+            </div>
+            <div class="weather-icon-main" id="currentIcon">🌤️</div>
+        </div>
+
+        <div class="weather-forecast" id="weatherForecast">
+            <!-- Forecast items will be injected here -->
+        </div>
+    </div>
 
     <!-- Flight Info -->
     <div class="info-card">
@@ -594,6 +704,7 @@
             <div class="info-details">
                 <div class="info-title">前島 Airbnb</div>
                 <div class="info-sub">那霸市前島 2-15-13 (2-chōme-15-13 Maejima)</div>
+                <!-- Pure Link -->
                 <a href="https://www.airbnb.com.tw/rooms/552680738785473114?viralityEntryPoint=1&s=76" target="_blank" class="header-link-btn">
                     查看房源連結 ↗
                 </a>
@@ -633,6 +744,10 @@
         景點
         <span class="date">Spots</span>
     </button>
+    <button class="day-btn" onclick="scrollToDay('section-shopping')">
+        購物
+        <span class="date">Shop</span>
+    </button>
 </div>
 
 <div class="content-container">
@@ -640,78 +755,73 @@
     <!-- Day 1 Content -->
     <div id="day1" class="day-content">
         <div class="card-header">
-            <span class="day-label">DAY 1 - 2/27 (五)</span>
+            <div class="header-top-row">
+                <span class="day-label">DAY 1 - 2/27 (五)</span>
+                <a href="https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E9%82%A3%E9%9C%B8%E5%A4%A9%E6%B0%A3&rlz=1C1CHBF_zh-TWTW972TW972&oq=%E6%B2%96%E7%B9%A9%E9%82%A3%E9%9C%B8%E5%A4%A9%E6%B0%A3" target="_blank" class="weather-check-btn">🌤️ 查詢天氣</a>
+            </div>
             <span class="card-title-text">🌺 那霸抵達 & 頂級燒肉</span>
         </div>
-
-        <!-- Weather Widget -->
-        <a href="https://www.google.com/search?q=Okinawa+Naha+Weather" target="_blank" class="weather-alert">
-            <span>🌤️ 早安！點此查看今日天氣預報</span>
-            <span>➤</span>
-        </a>
         
         <div class="timeline-item">
-            <span class="time-badge">12:30</span>
-            <h3 class="activity-title">✈️ 抵達那霸機場 (OKA)</h3>
+            <span class="time-badge">13:15</span>
+            <h3 class="activity-title">🛅 抵達美榮橋站 (Miebashi)</h3>
             <div class="activity-desc">
-                出關後，直接搭乘計程車前往國際通。
-                <div class="highlight">⚠️ 民宿 16:00 才能入住且無法寄物</div>
+                搭計程車直接前往車站寄放行李。
                 <br>
-                <a href="https://www.google.com/maps/search/?api=1&query=Naha+Airport" target="_blank" class="map-btn">📍 Google 導航</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Miebashi+Station" target="_blank" class="map-btn">📍 美榮橋站導航</a>
             </div>
         </div>
 
         <div class="travel-bridge">
-            <span class="travel-badge">🚕 計程車約 20 分鐘</span>
+            <span class="travel-badge">🚕 計程車約 5 分鐘</span>
         </div>
 
         <div class="timeline-item">
-            <span class="time-badge">13:30</span>
-            <h3 class="activity-title">🛅 寄放行李</h3>
-            <div class="activity-desc">
-                地點：沖繩國際通行李寄存 (T membership LOUNGE)
-                <br>解放雙手，輕鬆開始行程。
-                <br>
-                <a href="https://www.google.com/maps/search/?api=1&query=国際通り荷物預かり所T+membership+LOUNGE" target="_blank" class="map-btn">📍 行李寄存中心導航</a>
-            </div>
-        </div>
-
-        <div class="travel-bridge">
-            <span class="travel-badge">🚶 步行約 5-8 分鐘</span>
-        </div>
-
-        <div class="timeline-item">
-            <span class="time-badge">14:00</span>
-            <h3 class="activity-title">🍽️ 牧志公設市場 & 鹽屋</h3>
+            <span class="time-badge">13:40</span>
+            <h3 class="activity-title">🍽️ 牧志市場 ＆ 鹽屋霜淇淋</h3>
             <div class="activity-desc">
                 <span class="tag food">海鮮午餐</span> <span class="tag food">甜點</span><br>
-                1. 市場：1F 選海鮮，2F 現煮代客料理。<br>
-                2. 甜點：步行去吃「鹽屋」雪鹽霜淇淋 🍦。<br>
-                3. 備案：您發現的市場周邊美食。
+                1. 午餐吃現挑海鮮，逛逛巷弄。<br>
+                2. 在鹽屋享受撒鹽霜淇淋 🍦。<br>
                 <br>
                 <a href="https://www.google.com/maps/search/?api=1&query=Makishi+Public+Market" target="_blank" class="map-btn">📍 牧志市場</a>
-                <a href="https://maps.app.goo.gl/rsmVqkJYR2vg6m3u7" target="_blank" class="map-btn">📍 您的推薦餐廳</a>
                 <a href="https://maps.app.goo.gl/yPawfi2VhBGfbyHX6?g_st=ipc" target="_blank" class="map-btn">📍 鹽屋國際通</a>
             </div>
         </div>
 
         <div class="travel-bridge">
-            <span class="travel-badge">🚕 取行李往民宿 約 15 分鐘</span>
+            <span class="travel-badge">🚕 計程車約 15 分鐘</span>
         </div>
 
         <div class="timeline-item">
             <span class="time-badge">16:00</span>
-            <h3 class="activity-title">🏠 入住前島 Airbnb</h3>
+            <h3 class="activity-title">🏠 入住 Airbnb 休息</h3>
             <div class="activity-desc">
                 <span class="tag stay">住宿</span><br>
-                取回行李，前往民宿辦理入住。稍微午睡補眠，恢復體力。
+                取行李回民宿 (前島 2-15-13)，讓長輩或自己稍作午睡補眠。
                 <br>
                 <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿導航 (前島2-15-13)</a>
             </div>
         </div>
 
         <div class="travel-bridge">
-            <span class="travel-badge">🚶 步行約 10-15 分鐘 / 🚕 5 分鐘</span>
+            <span class="travel-badge">🚶 步行約 10 分鐘 / 🚕 5 分鐘</span>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-badge">17:30</span>
+            <h3 class="activity-title">🛍️ 國際通散步</h3>
+            <div class="activity-desc">
+                <span class="tag shop">逛街</span><br>
+                感受「奇蹟一英里」的熱鬧氛圍！<br>
+                沿途逛逛唐吉訶德、Calbee+、各式伴手禮店，一路逛往百貨公司。
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Kokusai+Dori+Naha" target="_blank" class="map-btn">📍 國際通導航</a>
+            </div>
+        </div>
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚶 步行往縣廳前方向</span>
         </div>
 
         <div class="timeline-item">
@@ -748,11 +858,10 @@
 
         <div class="timeline-item">
             <span class="time-badge">21:30</span>
-            <h3 class="activity-title">🛍️ MaxValu 松山店 (24H超市)</h3>
+            <h3 class="activity-title">🛍️ 補給：MaxValu 松山店</h3>
             <div class="activity-desc">
                 <span class="tag shop">生活補給</span><br>
-                離民宿步行僅 5-6 分鐘。<br>
-                回民宿前，先買好這幾天要喝的大瓶水、茶飲和水果宵夜 🛒。
+                採買水果與飲水。
                 <br>
                 <a href="https://maps.app.goo.gl/zhzEGrsdosH2ZKbu5?g_st=ipc" target="_blank" class="map-btn">📍 超市導航</a>
             </div>
@@ -762,15 +871,12 @@
     <!-- Day 2 Content -->
     <div id="day2" class="day-content">
         <div class="card-header">
-            <span class="day-label">DAY 2 - 2/28 (六)</span>
+            <div class="header-top-row">
+                <span class="day-label">DAY 2 - 2/28 (六)</span>
+                <a href="https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E9%82%A3%E9%9C%B8%E5%A4%A9%E6%B0%A3&rlz=1C1CHBF_zh-TWTW972TW972&oq=%E6%B2%96%E7%B9%A9%E9%82%A3%E9%9C%B8%E5%A4%A9%E6%B0%A3" target="_blank" class="weather-check-btn">🌤️ 查詢天氣</a>
+            </div>
             <span class="card-title-text">🌺 PARCO CITY & 壽喜燒</span>
         </div>
-
-        <!-- Weather Widget -->
-        <a href="https://www.google.com/search?q=Okinawa+Naha+Weather" target="_blank" class="weather-alert">
-            <span>🌤️ 早安！點此查看今日天氣預報</span>
-            <span>➤</span>
-        </a>
 
         <div class="timeline-item">
             <span class="time-badge">09:30</span>
@@ -803,7 +909,7 @@
             <h3 class="activity-title">🍽️ 海景午餐</h3>
             <div class="activity-desc">
                 <span class="tag view">海景</span><br>
-                直奔 2F/3F Food Hall 美食街，搶佔落地窗前第一排座位，看海吃午餐 🌊。
+                2F/3F 美食街看海用餐。
             </div>
         </div>
 
@@ -831,7 +937,7 @@
             <div class="activity-desc">
                 <span class="tag food">必吃</span><br>
                 ★ 特別安排週六 (因週日公休) ★<br>
-                全包廂座位，必點「黑糖棉花糖壽喜燒」，享受頂級服務。
+                黑糖棉花糖壽喜燒，全包廂座位。
                 <br>
                 <a href="https://maps.app.goo.gl/fvuENh8C9AW98idi6?g_st=ipc" target="_blank" class="map-btn">📍 Google 導航</a>
             </div>
@@ -846,7 +952,7 @@
             <h3 class="activity-title">🏠 返回民宿 & 明日準備</h3>
             <div class="activity-desc">
                 整理今日戰利品，準備休息。<br>
-                <div class="highlight">⚠️ 明天要去瀨長島泡足湯，請記得先準備好「小毛巾」放入包包！</div>
+                <div class="highlight">⚠️ 明天會去海邊，記得帶防風外套！</div>
             </div>
         </div>
     </div>
@@ -854,98 +960,12 @@
     <!-- Day 3 Content -->
     <div id="day3" class="day-content">
         <div class="card-header">
-            <span class="day-label">DAY 3 - 3/01 (日)</span>
-            <span class="card-title-text">🌺 鐘乳石 & 瀨長島夕陽</span>
-        </div>
-
-        <!-- Weather Widget -->
-        <a href="https://www.google.com/search?q=Okinawa+Naha+Weather" target="_blank" class="weather-alert">
-            <span>🌤️ 早安！點此查看今日天氣預報</span>
-            <span>➤</span>
-        </a>
-
-        <div class="timeline-item">
-            <span class="time-badge">09:15</span>
-            <h3 class="activity-title">🚕 民宿出發</h3>
-            <div class="activity-desc">
-                前往南部玉泉洞，準備參觀鐘乳石。<br>
-                <div class="highlight">⚠️ 出門檢查：有帶毛巾嗎？建議穿「方便穿脫的鞋子」(足湯用)。</div>
-                <br>
-                <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿位置</a>
+            <div class="header-top-row">
+                <span class="day-label">DAY 3 - 3/01 (日)</span>
+                <a href="https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E9%82%A3%E9%9C%B8%E5%A4%A9%E6%B0%A3&rlz=1C1CHBF_zh-TWTW972TW972&oq=%E6%B2%96%E7%B9%A9%E9%82%A3%E9%9C%B8%E5%A4%A9%E6%B0%A3" target="_blank" class="weather-check-btn">🌤️ 查詢天氣</a>
             </div>
+            <span class="card-title-text">🌺 古民家饗宴 ＆ 文化洗禮</span>
         </div>
-
-        <div class="travel-bridge">
-            <span class="travel-badge">🚕 計程車約 40 分鐘</span>
-        </div>
-
-        <div class="timeline-item">
-            <span class="time-badge">10:00</span>
-            <h3 class="activity-title">📷 玉泉洞 (沖繩世界)</h3>
-            <div class="activity-desc">
-                <span class="tag view">景點</span><br>
-                搭計程車往南部。<br>
-                漫步於恆溫 21°C 的壯觀鐘乳石洞。
-                <br>
-                <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+World+Gyokusendo" target="_blank" class="map-btn">📍 Google 導航</a>
-            </div>
-        </div>
-
-        <div class="travel-bridge">
-            <span class="travel-badge">🚕 計程車約 30 分鐘</span>
-        </div>
-
-        <div class="timeline-item">
-            <span class="time-badge">13:00</span>
-            <h3 class="activity-title">🍽️ 午餐：海景蝦蝦飯</h3>
-            <div class="activity-desc">
-                <span class="tag food">瀨長島必吃</span><br>
-                彷彿置身「長灘島」的度假氛圍！<br>
-                在 Umikaji Terrace 享用著名的蒜香蝦蝦飯，配上無敵海景。
-                <br>
-                <a href="https://www.myfunnow.com/products/3674216542123" target="_blank" class="map-btn">📍 預訂蝦蝦飯 (FunNow)</a>
-                <a href="https://maps.app.goo.gl/46bnYsKNn7vcnxFx7?g_st=ipc" target="_blank" class="map-btn">📍 Google 導航</a>
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="time-badge">14:30</span>
-            <h3 class="activity-title">📷 續攤：足湯 & 下午茶</h3>
-            <div class="activity-desc">
-                <span class="tag view">放鬆</span><br>
-                吃飽後散步到「龍神之湯」泡免費足湯。<br>
-                一邊泡腳，一邊看那霸機場飛機起降與美麗海景 ✈️。
-            </div>
-        </div>
-
-        <div class="travel-bridge">
-            <span class="travel-badge">🚕 計程車約 25 分鐘</span>
-        </div>
-
-        <div class="timeline-item">
-            <span class="time-badge">19:30</span>
-            <h3 class="activity-title">🍽️ 晚餐：琉家拉麵 (本店)</h3>
-            <div class="activity-desc">
-                <span class="tag food">在地美食</span><br>
-                招牌「黑焦蒜油豬骨拉麵」，麵條Q彈，蒜香濃郁。
-                <br>
-                <a href="https://www.google.com/maps/search/?api=1&query=Ryuka+Ramen+Naha" target="_blank" class="map-btn">📍 Google 導航</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Day 4 Content -->
-    <div id="day4" class="day-content">
-        <div class="card-header">
-            <span class="day-label">DAY 4 - 3/02 (一)</span>
-            <span class="card-title-text">🌺 海灘祈福 & 古城文化</span>
-        </div>
-
-        <!-- Weather Widget -->
-        <a href="https://www.google.com/search?q=Okinawa+Naha+Weather" target="_blank" class="weather-alert">
-            <span>🌤️ 早安！點此查看今日天氣預報</span>
-            <span>➤</span>
-        </a>
 
         <div class="timeline-item">
             <span class="time-badge">09:15</span>
@@ -962,28 +982,41 @@
 
         <div class="timeline-item">
             <span class="time-badge">09:30</span>
-            <h3 class="activity-title">📷 波之上海灘 & 波上宮</h3>
+            <h3 class="activity-title">📷 波之上海灘 ＆ 波上宮</h3>
             <div class="activity-desc">
                 <span class="tag view">市區海灘</span><br>
-                離民宿僅 5 分鐘車程。<br>
-                悠閒踩踩沙、看海，並在懸崖上的神社祈福 ⛩️。
-                <br>
+                在懸崖上的神社祈福，踩沙放空。<br>
                 <a href="https://www.google.com/maps/search/?api=1&query=Naminouegu+Shrine" target="_blank" class="map-btn">📍 Google 導航</a>
             </div>
         </div>
 
         <div class="travel-bridge">
-            <span class="travel-badge">🚕 計程車約 20-25 分鐘</span>
+            <span class="travel-badge">🚕 計程車約 20 分鐘</span>
         </div>
 
         <div class="timeline-item">
             <span class="time-badge">11:30</span>
-            <h3 class="activity-title">📷 首里城 & 首里杜館午餐</h3>
+            <h3 class="activity-title">🍽️ 午餐：首里茶房 美里うどぅん</h3>
             <div class="activity-desc">
-                <span class="tag food">文化午餐</span><br>
-                在無障礙設施完善的「首里杜館」內，享用精緻的琉球料理套膳。
+                <span class="tag food">古民家</span><br>
+                ★新納入：在歷史悠久的紅瓦古民家中享用精緻的沖繩麵料理。
                 <br>
-                <a href="https://www.google.com/maps/search/?api=1&query=Suimuikan+Restaurant" target="_blank" class="map-btn">📍 Google 導航</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=首里茶房+美里うどぅん" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+        
+        <div class="travel-bridge">
+            <span class="travel-badge">🚶 步行</span>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-badge">13:30</span>
+            <h3 class="activity-title">📷 首里城公園</h3>
+            <div class="activity-desc">
+                <span class="tag food">文化散策</span><br>
+                漫步守禮門與重建中的首里城，感受琉球王朝氣息。
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Shuri+Castle" target="_blank" class="map-btn">📍 Google 導航</a>
             </div>
         </div>
 
@@ -992,12 +1025,12 @@
         </div>
 
         <div class="timeline-item">
-            <span class="time-badge">14:30</span>
-            <h3 class="activity-title">🛍️ 永旺那霸店 (AEON)</h3>
+            <span class="time-badge">15:30</span>
+            <h3 class="activity-title">🛍️ AEON 那霸店 (小祿站)</h3>
             <div class="activity-desc">
-                <span class="tag shop">最後補貨</span><br>
-                搭單軌至小祿站。最後補齊 Uniqlo/3COINS。<br>
-                重點：在 1F 超市買日本草莓、水果帶回民宿吃 🍓。
+                <span class="tag shop">超市補貨</span><br>
+                補齊購物清單，買齊沖繩限定零食。<br>
+                <strong>重點：</strong>買幾盒高品質日本草莓回民宿開派對 (下午去買時機最佳！)。
                 <br>
                 <a href="https://www.google.com/maps/search/?api=1&query=AEON+Naha" target="_blank" class="map-btn">📍 Google 導航</a>
             </div>
@@ -1008,13 +1041,102 @@
         </div>
 
         <div class="timeline-item">
-            <span class="time-badge">18:00</span>
-            <h3 class="activity-title">🏠 民宿水果派對 & 整理</h3>
+            <span class="time-badge">19:00</span>
+            <h3 class="activity-title">自由活動 & 晚餐</h3>
             <div class="activity-desc">
-                享用超市美食，整理行李。<br>
-                <div class="highlight">⚠️ 記得預約明早 05:45 的計程車</div>
+                當晚可簡單用餐或在國際通附近悠閒散步。
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 4 Content -->
+    <div id="day4" class="day-content">
+        <div class="card-header">
+            <div class="header-top-row">
+                <span class="day-label">DAY 4 - 3/02 (一)</span>
+                <a href="https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E9%82%A3%E9%9C%B8%E5%A4%A9%E6%B0%A3&rlz=1C1CHBF_zh-TWTW972TW972&oq=%E6%B2%96%E7%B9%A9%E9%82%A3%E9%9C%B8%E5%A4%A9%E6%B0%A3" target="_blank" class="weather-check-btn">🌤️ 查詢天氣</a>
+            </div>
+            <span class="card-title-text">🌺 鐘乳石、夕陽與終極拉麵</span>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-badge">09:15</span>
+            <h3 class="activity-title">🚕 民宿出發</h3>
+            <div class="activity-desc">
+                前往南部玉泉洞，準備參觀鐘乳石。<br>
+                <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿位置</a>
+            </div>
+        </div>
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 40 分鐘</span>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-badge">10:00</span>
+            <h3 class="activity-title">📷 玉泉洞 (沖繩世界文化王國)</h3>
+            <div class="activity-desc">
+                <span class="tag view">景點</span><br>
+                探索鐘乳石景觀。<br>
+                <div class="highlight">💡 建議攜帶防風外套。</div>
                 <br>
-                <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿導航</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+World+Gyokusendo" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 30 分鐘</span>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-badge">13:00</span>
+            <h3 class="activity-title">🛍️ iias 豐崎 ＆ ASHIBINAA Outlet</h3>
+            <div class="activity-desc">
+                <span class="tag shop">午餐/購物</span><br>
+                享用午餐並進行最後的名牌折扣採買。
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Ashibinaa+Outlet+Mall" target="_blank" class="map-btn">📍 ASHIBINAA 導航</a>
+            </div>
+        </div>
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 15 分鐘</span>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-badge">16:00</span>
+            <h3 class="activity-title">📷 瀨長島 Umikaji Terrace</h3>
+            <div class="activity-desc">
+                <span class="tag view">放鬆</span><br>
+                <strong>行程：</strong>享受足湯、看飛機起降。<br>
+                <strong>慢活：</strong>看著日落（預計 18:25）與海景。<br>
+                *不需排隊吃蝦蝦飯，把時間留給美景。*<br>
+                <div class="highlight">⚠️ 記得帶泡足湯用的小毛巾。</div>
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Umikaji+Terrace+Senagajima" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
+        <div class="travel-bridge">
+            <span class="travel-badge">🚕 計程車約 25 分鐘</span>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-badge">19:30</span>
+            <h3 class="activity-title">🍽️ 晚餐：琉家拉麵 (本店)</h3>
+            <div class="activity-desc">
+                <span class="tag food">在地美食</span><br>
+                回到那霸市區，享用這趟旅程最後的重頭戲「黑焦蒜油豬骨拉麵」。
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query=Ryuka+Ramen+Naha" target="_blank" class="map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <span class="time-badge">21:00</span>
+            <h3 class="activity-title">🏠 整理行李 ＆ 預約計程車</h3>
+            <div class="activity-desc">
+                <div class="highlight">⚠️ 務必用 App 預約明早 05:45 的車。</div>
             </div>
         </div>
     </div>
@@ -1023,20 +1145,13 @@
     <div id="day5" class="day-content">
         <div class="card-header">
             <span class="day-label">DAY 5 - 3/03 (二)</span>
-            <span class="card-title-text">🌺 早安，順利返台</span>
+            <span class="card-title-text">🌺 平安返台</span>
         </div>
-
-        <!-- Weather Widget -->
-        <a href="https://www.google.com/search?q=Okinawa+Naha+Weather" target="_blank" class="weather-alert">
-            <span>🌤️ 早安！點此查看今日天氣預報</span>
-            <span>➤</span>
-        </a>
 
         <div class="timeline-item">
             <span class="time-badge">05:45</span>
-            <h3 class="activity-title">🚕 民宿出發前往機場</h3>
+            <h3 class="activity-title">🚕 搭乘預約計程車前往機場</h3>
             <div class="activity-desc">
-                搭乘預約好的計程車直達那霸機場 (約 15 分)。
                 <br>
                 <a href="https://www.google.com/maps/search/?api=1&query=Naha+Airport" target="_blank" class="map-btn">📍 Google 導航</a>
             </div>
@@ -1046,13 +1161,27 @@
             <span class="time-badge">08:00</span>
             <h3 class="activity-title">✈️ 班機起飛</h3>
             <div class="activity-desc">
-                帶著滿滿的回憶與戰利品，平安回家 ✈️
+                班機起飛 (NU301)，帶著滿滿戰利品回家。
             </div>
         </div>
     </div>
 
-    <div class="end-trip">
-        ~ 旅程圓滿結束 ~
+    <div class="tips-card">
+        <div class="tips-title">🚕 交通與穿著總提醒</div>
+        <ul class="tips-list">
+            <li class="tips-item">
+                <span class="tips-icon">🧥</span>
+                <span><strong>衣服：</strong>2 月底沖繩風大，尤其 Day 4 的瀨長島傍晚和 Day 3 的波上宮，那件防風外套絕對是必備。</span>
+            </li>
+            <li class="tips-item">
+                <span class="tips-icon">🚕</span>
+                <span><strong>計程車 App：</strong>建議使用 DiDi 或 GO，這幾天移動三個人分攤下來非常划算，還能把體力留在逛街上。</span>
+            </li>
+            <li class="tips-item">
+                <span class="tips-icon">🍓</span>
+                <span><strong>草莓控必看：</strong>AEON 小祿店的草莓通常傍晚就會開始打折或被掃貨，Day 3 下午去買是最佳時機！</span>
+            </li>
+        </ul>
     </div>
 
 </div>
@@ -1067,10 +1196,9 @@
         
         <!-- Card: Ryukyu no Ushi -->
         <div class="highlight-card">
-            <input type="file" id="file-ryukyu" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-ryukyu', 'okinawa_img_ryukyu')">
-            <label class="highlight-img-wrapper" for="file-ryukyu">
+            <div class="highlight-img-wrapper">
                 <img id="img-ryukyu" src="https://images.unsplash.com/photo-1594041680508-e3873d223f4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wagyu Beef" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">琉球的牛 (久茂地店)</h3>
                 <span class="card-eng">PREMIUM WAGYU BBQ</span>
@@ -1079,26 +1207,24 @@
             </div>
         </div>
 
-        <!-- Card: Ryubo Yoku Moku -->
+        <!-- Card: Yoku Moku -->
         <div class="highlight-card">
-            <input type="file" id="file-ryubo" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-ryubo', 'okinawa_img_ryubo')">
-            <label class="highlight-img-wrapper" for="file-ryubo">
-                <img id="img-ryubo" src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoku Moku Cookies" class="highlight-img">
-            </label>
+            <div class="highlight-img-wrapper">
+                <img id="img-yokumoku" src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoku Moku" class="highlight-img">
+            </div>
             <div class="card-content">
-                <h3 class="card-h3">Ryubo 琉貿百貨 (Yoku Moku)</h3>
-                <span class="card-eng">SOUVENIR & SWEETS</span>
-                <p class="card-desc">位於國際通入口的百貨公司，B1 甜點區必買 Yoku Moku 雪茄蛋捲，是送禮自用的最佳高級伴手禮。</p>
-                <a href="https://maps.app.goo.gl/wJ1d8qR5yZ3z9pQ58" target="_blank" class="card-map-btn">📍 Google Maps</a>
+                <h3 class="card-h3">Yoku Moku 雪茄蛋捲</h3>
+                <span class="card-eng">RYUBO DEPT. STORE</span>
+                <p class="card-desc">日本頂級伴手禮，濃郁奶香與酥脆口感的完美結合。位於國際通入口的琉貿百貨 1F，送禮自用兩相宜。</p>
+                <a href="https://www.yokumoku.co.jp/zh-tw/store/chugoku-shikoku-kyushu/30131/" target="_blank" class="card-map-btn">🔗 官網介紹</a>
             </div>
         </div>
 
         <!-- Card: Shrimp Rice -->
         <div class="highlight-card">
-            <input type="file" id="file-shrimp" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-shrimp', 'okinawa_img_shrimp')">
-            <label class="highlight-img-wrapper" for="file-shrimp">
+            <div class="highlight-img-wrapper">
                 <img id="img-shrimp" src="https://images.unsplash.com/photo-1599307767316-77e3fb6333a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Garlic Shrimp" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">海景蝦蝦飯</h3>
                 <span class="card-eng">GARLIC SHRIMP</span>
@@ -1109,10 +1235,9 @@
 
          <!-- Card: Shishiya -->
         <div class="highlight-card">
-            <input type="file" id="file-shishiya" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-shishiya', 'okinawa_img_shishiya')">
-            <label class="highlight-img-wrapper" for="file-shishiya">
+            <div class="highlight-img-wrapper">
                 <img id="img-shishiya" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shishiya Wagyu" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">立吞肉屋 ししや</h3>
                 <span class="card-eng">STANDING WAGYU BAR</span>
@@ -1123,10 +1248,9 @@
 
         <!-- Card: Sukiyaki -->
         <div class="highlight-card">
-            <input type="file" id="file-sukiyaki" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-sukiyaki', 'okinawa_img_sukiyaki')">
-            <label class="highlight-img-wrapper" for="file-sukiyaki">
+            <div class="highlight-img-wrapper">
                 <img id="img-sukiyaki" src="https://images.unsplash.com/photo-1608670356238-d6365440d6d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sukiyaki Wagyu" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">酒喜膳 一喜喜</h3>
                 <span class="card-eng">COTTON CANDY SUKIYAKI</span>
@@ -1137,8 +1261,7 @@
 
         <!-- Card: Blue Seal / Salt Ice Cream -->
         <div class="highlight-card">
-            <input type="file" id="file-icecream" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-icecream', 'okinawa_img_icecream')">
-            <label class="highlight-img-wrapper" for="file-icecream">
+            <div class="highlight-img-wrapper">
                 <!-- Updated Image to a new soft serve photo based on user request -->
                 <img id="img-icecream" src="https://images.unsplash.com/photo-1516550893923-37a49fc51b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salt Soft Serve Ice Cream" class="highlight-img">
             </div>
@@ -1147,6 +1270,32 @@
                 <span class="card-eng">SALT ICE CREAM</span>
                 <p class="card-desc">國際通必吃甜點，鹹甜交織的獨特風味，還可以自己撒上柚子鹽、抹茶鹽等十多種調味。</p>
                 <a href="https://bobbyfun.tw/2023-05-01-2340/" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
+            </div>
+        </div>
+        
+        <!-- Card: Makishi Market -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1534483509719-3feaee7c30da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Makishi Market" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">第一牧志公設市場</h3>
+                <span class="card-eng">SEAFOOD & LOCAL VIBE</span>
+                <p class="card-desc">沖繩的廚房！1 樓挑選生猛海鮮（龍蝦、夜光貝），2 樓代客料理。環境整潔有電梯，長輩也能輕鬆逛。</p>
+                <a href="https://mimihan.tw/makishi-public-market/" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
+            </div>
+        </div>
+        
+        <!-- Card: MaxValu Supermarket -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img id="img-maxvalu" src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="MaxValu Supermarket" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">MaxValu 松山店 (24H超市)</h3>
+                <span class="card-eng">24H SUPERMARKET</span>
+                <p class="card-desc">離民宿步行僅 5 分鐘！24 小時營業的超大補給站。回民宿前必逛，買沖繩限定零食、泡盛、熟食與新鮮水果。</p>
+                <a href="https://www.google.com/search?q=%E6%B2%96%E7%B9%A9+MaxValu+%E5%BF%85%E8%B2%B7+%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" class="card-map-btn">🔗 搜尋必買清單</a>
             </div>
         </div>
     </div>
@@ -1159,13 +1308,25 @@
         <div class="section-subtitle">SCENERY & SPOTS</div>
     </div>
     <div class="vertical-list-container">
+
+        <!-- Card: Ryujin no Yu Foot Bath -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img id="img-footbath" src="https://images.unsplash.com/photo-1614264627447-062e779a55e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Foot Bath" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">龍神之湯 (免費足湯)</h3>
+                <span class="card-eng">FREE FOOT BATH</span>
+                <p class="card-desc">瀨長島 Umikaji Terrace 入口處的隱藏版福利！使用天然溫泉的免費足湯，讓雙腳在旅途中獲得極致放鬆，還能欣賞夕陽美景。</p>
+                <a href="https://furikake.okinawa/okinawa-spot/okinawa_zutang/" target="_blank" class="card-map-btn">🔗 部落格介紹</a>
+            </div>
+        </div>
         
         <!-- Card: Umikaji Terrace -->
         <div class="highlight-card">
-            <input type="file" id="file-umikaji" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-umikaji', 'okinawa_img_umikaji')">
-            <label class="highlight-img-wrapper" for="file-umikaji">
+            <div class="highlight-img-wrapper">
                 <img id="img-umikaji" src="https://images.unsplash.com/photo-1627915502202-692790930772?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Okinawa Sea" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">瀨長島 Umikaji</h3>
                 <span class="card-eng">SEASIDE TERRACE</span>
@@ -1176,10 +1337,9 @@
 
         <!-- Card: PARCO CITY -->
         <div class="highlight-card">
-            <input type="file" id="file-parco" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-parco', 'okinawa_img_parco')">
-            <label class="highlight-img-wrapper" for="file-parco">
+            <div class="highlight-img-wrapper">
                 <img id="img-parco" src="https://images.unsplash.com/photo-1519692933481-e162a57d6721?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mall Window View" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">PARCO CITY</h3>
                 <span class="card-eng">OCEAN VIEW MALL</span>
@@ -1190,10 +1350,9 @@
 
         <!-- Card: Gyokusendo -->
         <div class="highlight-card">
-            <input type="file" id="file-cave" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-cave', 'okinawa_img_cave')">
-            <label class="highlight-img-wrapper" for="file-cave">
+            <div class="highlight-img-wrapper">
                 <img id="img-cave" src="https://images.unsplash.com/photo-1516900448138-898720b936c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cave" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">玉泉洞</h3>
                 <span class="card-eng">LIMESTONE CAVE</span>
@@ -1204,10 +1363,9 @@
 
         <!-- Card: Shuri Castle -->
         <div class="highlight-card">
-            <input type="file" id="file-shuri" class="file-input" accept="image/*" style="display: none;" onchange="updateImage(this, 'img-shuri', 'okinawa_img_shuri')">
-            <label class="highlight-img-wrapper" for="file-shuri">
+            <div class="highlight-img-wrapper">
                 <img id="img-shuri" src="https://images.unsplash.com/photo-1599577937388-333dfd280a9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shuri Castle" class="highlight-img">
-            </label>
+            </div>
             <div class="card-content">
                 <h3 class="card-h3">首里城公園</h3>
                 <span class="card-eng">WORLD HERITAGE</span>
@@ -1218,9 +1376,101 @@
     </div>
 </div>
 
+<!-- === Highlight Section 3: Shopping === -->
+<div id="section-shopping" class="section-wrapper">
+    <div class="section-header">
+        <div class="section-title">必買戰利品清單</div>
+        <div class="section-subtitle">SHOPPING LIST</div>
+    </div>
+    <div class="vertical-list-container">
+        
+        <!-- Card: User Wishlist (New!) -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img id="img-wishlist" src="https://images.unsplash.com/photo-1555529771-835f59e740e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shopping Bags" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">個人指定必買</h3>
+                <span class="card-eng">PERSONAL WISHLIST</span>
+                <p class="card-desc">
+                    ⭐ <strong>SABON</strong>：白茶極潤護手霜<br>
+                    ⭐ <strong>資生堂</strong>：ULTIMUNE 紅妍肌活護手霜<br>
+                    ⭐ <strong>TSUBAKI</strong>：金色蓬鬆洗髮精<br>
+                    ⭐ <strong>Attack</strong>：抗菌EX 洗衣精
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Daikoku+Drug+Naha" target="_blank" class="card-map-btn">📍 大國藥妝導航</a>
+            </div>
+        </div>
+        
+        <!-- Card: ASHIBINAA -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img id="img-ashibinaa" src="https://images.unsplash.com/photo-1519567241046-7f570eee3d9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Outlet Mall" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">ASHIBINAA Outlet</h3>
+                <span class="card-eng">PREMIUM OUTLET</span>
+                <p class="card-desc">超過 100 間國際名牌進駐的露天 Outlet，Gucci, Coach, Agnes b. 都有，還有 UA 運動品牌折扣。</p>
+                <a href="https://ashibinaa.okinawa/floor/index.html" target="_blank" class="card-map-btn">🔗 品牌樓層導覽</a>
+            </div>
+        </div>
+
+        <!-- Card: Yoku Moku -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img id="img-yokumoku" src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoku Moku" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">Yoku Moku 雪茄蛋捲</h3>
+                <span class="card-eng">RYUBO DEPT. STORE</span>
+                <p class="card-desc">日本頂級伴手禮，濃郁奶香與酥脆口感的完美結合。位於國際通入口的琉貿百貨 1F，送禮自用兩相宜。</p>
+                <a href="https://www.yokumoku.co.jp/zh-tw/store/chugoku-shikoku-kyushu/30131/" target="_blank" class="card-map-btn">🔗 官網介紹</a>
+            </div>
+        </div>
+
+        <!-- Card: 3COINS -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img id="img-3coins" src="https://images.unsplash.com/photo-1602143407151-11115cdbf69c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="3COINS Goods" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">3COINS 生活雜貨</h3>
+                <span class="card-eng">LIFESTYLE GOODS</span>
+                <p class="card-desc">PARCO CITY 和 iias 沖繩豐崎都有店鋪。必買高質感的飾品與生活小物，只要 300 日圓起！</p>
+                <a href="https://www.palcloset.jp/3coins/" target="_blank" class="card-map-btn">🔗 官網商品一覽</a>
+            </div>
+        </div>
+
+        <!-- Card: Yukishio -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img id="img-yukishio" src="https://images.unsplash.com/photo-1621262479590-7c0b89f53229?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salt" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">宮古島雪鹽 & 餅乾</h3>
+                <span class="card-eng">SOUVENIR</span>
+                <p class="card-desc">在國際通鹽屋購買。粉末般細緻的雪鹽適合烹飪，雪鹽金楚糕則是配茶點心的首選。</p>
+                <a href="https://www.yukishio.com/" target="_blank" class="card-map-btn">🔗 官網介紹</a>
+            </div>
+        </div>
+
+        <!-- Card: Supermarket Haul -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img id="img-snacks" src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Supermarket" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">超市限定零食 & 泡盛</h3>
+                <span class="card-eng">LOCAL SNACKS</span>
+                <p class="card-desc">在 MaxValu 或 iias AEON 掃貨！沖繩限定的 Pretz、黑糖巧克力、Orion 啤酒與泡盛，是最實惠的伴手禮。</p>
+                <a href="https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E8%B6%85%E5%B8%82%E5%BF%85%E8%B2%B7" target="_blank" class="card-map-btn">🔗 搜尋必買清單</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer>
     Designed for 2026 Okinawa Family Trip 🐢
-    <button class="reset-btn" onclick="resetImages()">重置所有照片</button>
 </footer>
 
 <script>
@@ -1241,65 +1491,11 @@
         }
     }
 
-    // Image Upload Handler
-    function updateImage(input, imgId, storageKey) {
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                const base64String = e.target.result;
-                // 1. Update visual
-                document.getElementById(imgId).src = base64String;
-                // 2. Save to LocalStorage
-                try {
-                    localStorage.setItem(storageKey, base64String);
-                } catch (e) {
-                    console.error("LocalStorage full or error:", e);
-                    alert("圖片太大無法儲存，但目前瀏覽可以顯示。");
-                }
-            }
-            
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    function loadSavedImages() {
-        const images = [
-            { id: 'img-ryukyu', key: 'okinawa_img_ryukyu' },
-            { id: 'img-ryubo', key: 'okinawa_img_ryubo' },
-            { id: 'img-shrimp', key: 'okinawa_img_shrimp' },
-            { id: 'img-sukiyaki', key: 'okinawa_img_sukiyaki' },
-            { id: 'img-icecream', key: 'okinawa_img_icecream' },
-            { id: 'img-umikaji', key: 'okinawa_img_umikaji' },
-            { id: 'img-parco', key: 'okinawa_img_parco' },
-            { id: 'img-cave', key: 'okinawa_img_cave' },
-            { id: 'img-shuri', key: 'okinawa_img_shuri' },
-            { id: 'img-shishiya', key: 'okinawa_img_shishiya' }
-        ];
-
-        images.forEach(img => {
-            const savedData = localStorage.getItem(img.key);
-            if (savedData) {
-                const imgElement = document.getElementById(img.id);
-                if (imgElement) {
-                    imgElement.src = savedData;
-                }
-            }
-        });
-    }
-
-    function resetImages() {
-        if(confirm('確定要重置所有照片回預設值嗎？')) {
-            // Remove image keys only
-            Object.keys(localStorage).forEach(key => {
-                if(key.startsWith('okinawa_img_')) localStorage.removeItem(key);
-            });
-            location.reload();
-        }
-    }
-
     // Optional: Add IntersectionObserver to highlight button on scroll
     document.addEventListener('DOMContentLoaded', () => {
+        // Init Weather (Fetching real data)
+        fetchWeather();
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1323,6 +1519,60 @@
             observer.observe(section);
         });
     });
+
+    // --- Weather Logic ---
+    async function fetchWeather() {
+        try {
+            const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=26.2124&longitude=127.6809&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo');
+            const data = await response.json();
+            
+            // Update Current
+            document.getElementById('currentTemp').innerText = `${Math.round(data.current_weather.temperature)}°C`;
+            document.getElementById('currentDesc').innerText = getWeatherDesc(data.current_weather.weathercode);
+            document.getElementById('currentIcon').innerText = getWeatherIcon(data.current_weather.weathercode);
+
+            // Update Forecast (Next 5 days)
+            const forecastContainer = document.getElementById('weatherForecast');
+            forecastContainer.innerHTML = '';
+            
+            for(let i=0; i<=3; i++) { // Today + 3 days
+                const dayCode = data.daily.weathercode[i];
+                const maxT = Math.round(data.daily.temperature_2m_max[i]);
+                const minT = Math.round(data.daily.temperature_2m_min[i]);
+                const date = new Date(data.daily.time[i]);
+                const dayName = i === 0 ? '今天' : date.toLocaleDateString('zh-TW', {weekday: 'short'});
+
+                const item = document.createElement('div');
+                item.className = 'forecast-item';
+                item.innerHTML = `
+                    <span class="forecast-day">${dayName}</span>
+                    <span class="forecast-icon">${getWeatherIcon(dayCode)}</span>
+                    <span class="forecast-temp">${minT}-${maxT}°</span>
+                `;
+                forecastContainer.appendChild(item);
+            }
+
+        } catch (e) {
+            console.error("Weather fetch failed", e);
+            document.getElementById('currentDesc').innerText = "無法載入";
+        }
+    }
+
+    function getWeatherIcon(code) {
+        if(code <= 3) return '☀️';
+        if(code <= 48) return '☁️';
+        if(code <= 67) return '🌧️';
+        if(code <= 82) return '⛈️';
+        return '🌦️';
+    }
+
+    function getWeatherDesc(code) {
+        if(code === 0) return '晴朗';
+        if(code <= 3) return '多雲';
+        if(code <= 45) return '有霧';
+        if(code <= 67) return '有雨';
+        return '陣雨';
+    }
 </script>
 
 </body>
