@@ -707,6 +707,37 @@
         .save-key-btn { background: #00897B; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; margin-top: 10px;}
         .loading-dots:after { content: ' .'; animation: dots 1s steps(5, end) infinite;} @keyframes dots { 0%, 20% { content: ' .'; } 40% { content: ' ..'; } 60% { content: ' ...'; } 90%, 100% { content: ''; } }
 
+        /* Shopping List Styles */
+        .shopping-fab {
+            position: fixed; bottom: 25px; left: 25px; width: 60px; height: 60px;
+            background: linear-gradient(135deg, #FDD835, #FBC02D); border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(253, 216, 53, 0.4); display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 26px; cursor: pointer; z-index: 1000; transition: transform 0.2s;
+        }
+        .shopping-fab:active { transform: scale(0.9); }
+        
+        .shopping-modal {
+            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 90%; max-width: 400px; background: white; border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); z-index: 2000; overflow: hidden;
+            flex-direction: column; max-height: 80vh;
+        }
+        .shopping-header { background: #FFF3E0; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .shopping-header h3 { margin: 0; color: #F57F17; font-size: 18px; }
+        .shopping-close { background: none; border: none; font-size: 24px; color: #F57F17; cursor: pointer; }
+        
+        .shopping-body { padding: 20px; overflow-y: auto; flex: 1; }
+        .shopping-input-group { display: flex; margin-bottom: 15px; }
+        .shopping-input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 8px 0 0 8px; outline: none; }
+        .shopping-add-btn { background: #FFB74D; color: white; border: none; padding: 0 20px; border-radius: 0 8px 8px 0; font-weight: bold; cursor: pointer; }
+        
+        .shopping-list { list-style: none; padding: 0; margin: 0; }
+        .shopping-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .shopping-item.done span { text-decoration: line-through; color: #999; }
+        .shopping-item-text { flex: 1; font-size: 15px; cursor: pointer; }
+        .shopping-delete { color: #E57373; background: none; border: none; padding: 5px; font-size: 16px; cursor: pointer; }
+        .empty-msg { text-align: center; color: #999; margin-top: 20px; font-size: 13px; }
+
     </style>
 </head>
 <body>
@@ -854,7 +885,7 @@
         </div>
 
         <div class="travel-bridge">
-            <span class="travel-badge">🚕 計程車約 15 分鐘</span>
+            <span class="travel-badge">🚶 步行回美榮橋取行李 ➜ 🚕 計程車至民宿</span>
         </div>
 
         <div class="timeline-item">
@@ -862,14 +893,15 @@
             <h3 class="activity-title">🏠 入住 Airbnb 休息</h3>
             <div class="activity-desc">
                 <span class="tag stay">住宿</span><br>
-                取行李回民宿 (前島 2-15-13)，讓長輩或自己稍作午睡補眠。
+                從美榮橋站取回行李後，搭車前往民宿 (前島 2-15-13) 辦理入住。<br>
+                讓長輩或自己稍作午睡補眠，恢復體力。
                 <br>
                 <a href="https://maps.app.goo.gl/rnZVXydEmetiyDqF7" target="_blank" class="map-btn">📍 民宿導航 (前島2-15-13)</a>
             </div>
         </div>
 
         <div class="travel-bridge">
-            <span class="travel-badge">🚶 步行約 10-15 分鐘 / 🚕 5 分鐘</span>
+            <span class="travel-badge">🚶 步行約 10 分鐘 / 🚕 5 分鐘</span>
         </div>
 
         <div class="timeline-item">
@@ -959,7 +991,7 @@
             <h3 class="activity-title">🛍️ PARCO CITY 全日購物</h3>
             <div class="activity-desc">
                 <span class="tag shop">購物</span><br>
-                重點：Uniqlo、GU、松本清。<br>
+                重點：Uniqlo, GU, 松本清。<br>
                 必逛：3COINS+plus，這時段最適合挑選你喜歡的那款透明吸管水壺及精美生活雜貨。<br>
                 <a href="https://www.google.com/maps/search/?api=1&query=San-A+Urasoe+West+Coast+PARCO+CITY" target="_blank" class="map-btn">📍 Google 導航</a>
             </div>
@@ -1225,7 +1257,7 @@
             </li>
             <li class="tips-item">
                 <span class="tips-icon">🚕</span>
-                <span><strong>計程車 App：</strong>建議使用 DiDi 或 GO，這幾天移動三個人分攤下來非常划算，還能把體力留在逛街上。</span>
+                <span><strong>計程車 App：</strong>建議使用 DiDi 或 GO，這幾天移動三個人非常划算，還能把體力留在逛街上。</span>
             </li>
             <li class="tips-item">
                 <span class="tips-icon">🍓</span>
@@ -1238,6 +1270,9 @@
 
 <!-- AI Chat Button -->
 <div class="chat-fab" onclick="toggleChat()">✨</div>
+
+<!-- Shopping List FAB -->
+<div class="shopping-fab" onclick="toggleShoppingModal()">📝</div>
 
 <!-- Chat Window -->
 <div class="chat-modal" id="chatModal">
@@ -1259,6 +1294,24 @@
     <div id="imagePreview" class="preview-container"></div>
 </div>
 
+<!-- Shopping List Modal -->
+<div class="shopping-modal" id="shoppingModal">
+    <div class="shopping-header">
+        <h3>🛍️ 購物清單</h3>
+        <button class="shopping-close" onclick="toggleShoppingModal()">×</button>
+    </div>
+    <div class="shopping-body">
+        <div class="shopping-input-group">
+            <input type="text" id="shoppingInput" class="shopping-input" placeholder="輸入想買的東西..." onkeypress="handleShoppingKey(event)">
+            <button class="shopping-add-btn" onclick="addShoppingItem()">＋</button>
+        </div>
+        <ul id="shoppingList" class="shopping-list">
+            <!-- Items go here -->
+        </ul>
+        <div id="emptyMsg" class="empty-msg">目前清單是空的</div>
+    </div>
+</div>
+
 <!-- Highlight Section 1: Food -->
 <div id="section-food" class="section-wrapper">
     <div class="section-header">
@@ -1268,19 +1321,19 @@
     <div class="vertical-list-container">
         <!-- 圖片管理區：請在 GitHub 上傳圖片後，將 src="網址" 改成 src="您的檔名.jpg" -->
         
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-makishi" src="Market.webp" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">第一牧志公設市場</h3><p class="card-desc">挑選生猛海鮮，代客料理。<br><strong>必吃推薦：</strong>2F 的「步沙翁 (Ayumi)」現炸開口笑。</p><a href="https://mimihan.tw/makishi-public-market/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-makishi" src="https://images.unsplash.com/photo-1534483509719-3feaee7c30da?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">第一牧志公設市場</h3><p class="card-desc">挑選生猛海鮮，代客料理。<br><strong>必吃推薦：</strong>2F 的「步沙翁 (Ayumi)」現炸開口笑。</p><a href="https://mimihan.tw/makishi-public-market/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
 
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-shishiya" src="shishiya.jpg.webp" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">立吞肉屋 ししや</h3><p class="card-desc">牧志市場旁現烤和牛。</p><a href="https://shin.tw/okinawa-shishiya/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-shishiya" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">立吞肉屋 ししや</h3><p class="card-desc">牧志市場旁現烤和牛。</p><a href="https://shin.tw/okinawa-shishiya/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
         
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-icecream" src="Ice cream.jpg class="highlight-img"></div><div class="card-content"><h3 class="card-h3">鹽屋雪鹽霜淇淋</h3><p class="card-desc">鹹甜交織的獨特風味。</p><a href="https://bobbyfun.tw/2023-05-01-2340/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-icecream" src="https://images.unsplash.com/photo-1516550893923-37a49fc51b7a?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">鹽屋雪鹽霜淇淋</h3><p class="card-desc">鹹甜交織的獨特風味。</p><a href="https://bobbyfun.tw/2023-05-01-2340/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
 
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-ryukyu" src="BEEF.jpg" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">琉球的牛</h3><p class="card-desc">頂級和牛燒肉。</p><a href="https://plumpyblog.com/ryukyu-no-ushi-naha/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-ryukyu" src="https://images.unsplash.com/photo-1594041680508-e3873d223f4c?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">琉球的牛</h3><p class="card-desc">頂級和牛燒肉。</p><a href="https://plumpyblog.com/ryukyu-no-ushi-naha/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
         
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-sukiyaki" src="Suiky.jpeg" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">酒喜膳 一喜喜</h3><p class="card-desc">黑糖棉花糖壽喜燒。</p><a href="https://anise.tw/281181" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-sukiyaki" src="https://images.unsplash.com/photo-1608670356238-d6365440d6d5?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">酒喜膳 一喜喜</h3><p class="card-desc">黑糖棉花糖壽喜燒。</p><a href="https://anise.tw/281181" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
 
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-shurisoba" src="Noodle.jpeg" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">首里茶房 美里うどぅん</h3><p class="card-desc">古民家沖繩麵。</p><a href="https://www.google.com/maps/search/?api=1&query=首里茶房+美里うどぅん" target="_blank" class="card-map-btn">📍 Google 導航</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-shurisoba" src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">首里茶房 美里うどぅん</h3><p class="card-desc">古民家沖繩麵。</p><a href="https://www.google.com/maps/search/?api=1&query=首里茶房+美里うどぅん" target="_blank" class="card-map-btn">📍 Google 導航</a></div></div>
 
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-shrimp" src="by・The・shrimp.jpg" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">海景蝦蝦飯</h3><p class="card-desc">瀨長島必吃蒜香蝦。</p><a href="https://boo2k.com/%E7%80%A8%E9%95%B7%E5%B3%B6%E7%BE%8E%E9%A3%9F%EF%BC%8Cby%E3%83%BBthe%E3%83%BBshrimp%E8%9D%A6%E8%9D%A6%E9%A3%AF%EF%BC%8C%E8%97%8D%E5%A4%A9%E3%80%81%E9%A3%9B%E6%A9%9F%E3%80%81%E6%B5%B7%E6%99%AF%E4%B8%80/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-shrimp" src="https://images.unsplash.com/photo-1599307767316-77e3fb6333a6?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">海景蝦蝦飯</h3><p class="card-desc">瀨長島必吃蒜香蝦。</p><a href="https://boo2k.com/%E7%80%A8%E9%95%B7%E5%B3%B6%E7%BE%8E%E9%A3%9F%EF%BC%8Cby%E3%83%BBthe%E3%83%BBshrimp%E8%9D%A6%E8%9D%A6%E9%A3%AF%EF%BC%8C%E8%97%8D%E5%A4%A9%E3%80%81%E9%A3%9B%E6%A9%9F%E3%80%81%E6%B5%B7%E6%99%AF%E4%B8%80/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
     </div>
 </div>
 
@@ -1288,11 +1341,11 @@
 <div id="section-spots" class="section-wrapper">
     <div class="section-header"><div class="section-title">沖繩蔚藍絕景</div></div>
     <div class="vertical-list-container">
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-parco" src="PARCO.png" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">PARCO CITY</h3><p class="card-desc">海景購物中心。</p><a href="https://okinawa.letsgojp.com/archives/543066/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-shuri" src="Soul city.jpg0" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">首里城公園</h3><p class="card-desc">琉球王國古城。</p><a href="https://okinawa.letsgojp.com/archives/14911/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-cave" src="gyokusen_do.jpg" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">玉泉洞</h3><p class="card-desc">壯觀鐘乳石。</p><a href="https://okinawa.letsgojp.com/archives/757370/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-umikaji" src="island.webp" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">瀨長島</h3><p class="card-desc">希臘風海景與飛機。</p><a href="https://okinawa.letsgojp.com/archives/405500/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-footbath" src="IMG_0331.jpeg" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">龍神之湯</h3><p class="card-desc">免費足湯。</p><a href="https://furikake.okinawa/okinawa-spot/okinawa_zutang/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-parco" src="https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">PARCO CITY</h3><p class="card-desc">海景購物中心。</p><a href="https://okinawa.letsgojp.com/archives/543066/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-shuri" src="https://images.unsplash.com/photo-1599577937388-333dfd280a9d?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">首里城公園</h3><p class="card-desc">琉球王國古城。</p><a href="https://okinawa.letsgojp.com/archives/14911/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-cave" src="https://images.unsplash.com/photo-1516900448138-898720b936c7?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">玉泉洞</h3><p class="card-desc">壯觀鐘乳石。</p><a href="https://okinawa.letsgojp.com/archives/757370/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-umikaji" src="https://images.unsplash.com/photo-1627915502202-692790930772?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">瀨長島</h3><p class="card-desc">希臘風海景與飛機。</p><a href="https://okinawa.letsgojp.com/archives/405500/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-footbath" src="https://images.unsplash.com/photo-1614264627447-062e779a55e2?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">龍神之湯</h3><p class="card-desc">免費足湯。</p><a href="https://furikake.okinawa/okinawa-spot/okinawa_zutang/" target="_blank" class="card-map-btn">🔗 部落格介紹</a></div></div>
     </div>
 </div>
 
@@ -1322,7 +1375,8 @@
     }
     document.addEventListener('DOMContentLoaded', () => {
         fetchWeather();
-        loadSavedImages(); 
+        loadSavedImages(); // Start loading images
+        loadShoppingList(); // Load Shopping List
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1349,17 +1403,17 @@
 
     // --- Image Manager (Centralized) ---
     const tripImages = {
-        "img-ryukyu": "https://images.unsplash.com/photo-1594041680508-e3873d223f4c?w=800",
-        "img-yokumoku": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800",
-        "img-shrimp": "https://images.unsplash.com/photo-1599307767316-77e3fb6333a6?w=800",
-        "img-shurisoba": "https://images.unsplash.com/photo-1555126634-323283e090fa?w=800",
-        "img-shishiya": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800",
-        "img-sukiyaki": "https://images.unsplash.com/photo-1608670356238-d6365440d6d5?w=800",
-        "img-icecream": "https://images.unsplash.com/photo-1516550893923-37a49fc51b7a?w=800",
-        "img-makishi": "https://images.unsplash.com/photo-1534483509719-3feaee7c30da?w=800",
-        "img-footbath": "https://images.unsplash.com/photo-1614264627447-062e779a55e2?w=800",
+        "img-ryukyu": "BEEF.jpg",
+        "img-yokumoku": "EGGｒｏｏｌ.png",
+        "img-shrimp": "by・The・shrimp.jpg",
+        "img-shurisoba": "Noodle.jpeg",
+        "img-shishiya": "shishiya.jpg.webp",
+        "img-sukiyaki": "Suiky.jpeg",
+        "img-icecream": "Ice cream.jpg",
+        "img-makishi": "Market.webp",
+        "img-footbath": "IMG_0331.jpeg",
         "img-umikaji": "https://images.unsplash.com/photo-1627915502202-692790930772?w=800",
-        "img-parco": "https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=800",
+        "img-parco": "PARCO.png",
         "img-cave": "https://images.unsplash.com/photo-1516900448138-898720b936c7?w=800",
         "img-shuri": "https://images.unsplash.com/photo-1599577937388-333dfd280a9d?w=800",
         "img-wishlist": "https://images.unsplash.com/photo-1555529771-835f59e740e0?w=800",
@@ -1404,6 +1458,72 @@
     }
     function getWeatherIcon(code) { if(code<=3)return '☀️'; if(code<=48)return '☁️'; if(code<=67)return '🌧️'; return '⛈️'; }
     function getWeatherDesc(code) { if(code===0)return '晴朗'; if(code<=3)return '多雲'; if(code<=45)return '有霧'; if(code<=67)return '有雨'; return '陣雨'; }
+
+    // --- Shopping List Logic ---
+    const shoppingModal = document.getElementById('shoppingModal');
+    const shoppingListEl = document.getElementById('shoppingList');
+    const shoppingInput = document.getElementById('shoppingInput');
+    const emptyMsg = document.getElementById('emptyMsg');
+
+    function toggleShoppingModal() {
+        shoppingModal.style.display = shoppingModal.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function loadShoppingList() {
+        const storedList = JSON.parse(localStorage.getItem('okinawa_shopping_list')) || [];
+        renderShoppingList(storedList);
+    }
+
+    function saveShoppingList(list) {
+        localStorage.setItem('okinawa_shopping_list', JSON.stringify(list));
+    }
+
+    function renderShoppingList(list) {
+        shoppingListEl.innerHTML = '';
+        if (list.length === 0) {
+            emptyMsg.style.display = 'block';
+        } else {
+            emptyMsg.style.display = 'none';
+            list.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = `shopping-item ${item.done ? 'done' : ''}`;
+                li.innerHTML = `
+                    <span class="shopping-item-text" onclick="toggleItemDone(${index})">${item.text}</span>
+                    <button class="shopping-delete" onclick="deleteItem(${index})">×</button>
+                `;
+                shoppingListEl.appendChild(li);
+            });
+        }
+    }
+
+    function addShoppingItem() {
+        const text = shoppingInput.value.trim();
+        if (text) {
+            const list = JSON.parse(localStorage.getItem('okinawa_shopping_list')) || [];
+            list.push({ text: text, done: false });
+            saveShoppingList(list);
+            renderShoppingList(list);
+            shoppingInput.value = '';
+        }
+    }
+
+    function handleShoppingKey(e) {
+        if (e.key === 'Enter') addShoppingItem();
+    }
+
+    function deleteItem(index) {
+        const list = JSON.parse(localStorage.getItem('okinawa_shopping_list')) || [];
+        list.splice(index, 1);
+        saveShoppingList(list);
+        renderShoppingList(list);
+    }
+
+    function toggleItemDone(index) {
+        const list = JSON.parse(localStorage.getItem('okinawa_shopping_list')) || [];
+        list[index].done = !list[index].done;
+        saveShoppingList(list);
+        renderShoppingList(list);
+    }
 
     // --- AI Chat ---
     let apiKey = "";
