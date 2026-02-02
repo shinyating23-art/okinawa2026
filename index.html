@@ -32,7 +32,7 @@
             color: var(--text-main);
             margin: 0;
             padding: 0;
-            padding-bottom: 80px; /* Space for FAB */
+            padding-bottom: 60px; /* Space for footer */
             background-image: radial-gradient(#FFCCBC 1px, transparent 1px);
             background-size: 20px 20px;
             cursor: pointer; 
@@ -901,7 +901,7 @@
         </div>
 
         <div class="travel-bridge">
-            <span class="travel-badge">🚶 步行約 10 分鐘 / 🚕 5 分鐘</span>
+            <span class="travel-badge">🚶 步行約 10-15 分鐘 / 🚕 5 分鐘</span>
         </div>
 
         <div class="timeline-item">
@@ -1188,7 +1188,7 @@
             <h3 class="activity-title">📷 瀨長島 Umikaji Terrace</h3>
             <div class="activity-desc">
                 <span class="tag view">放鬆</span><br>
-                <strong>行程：</strong>享受足湯、看飛機起降。<br>
+                <strong>行程：</strong>逛逛 FSGB 香水、享受足湯、看飛機起降。<br>
                 <strong>慢活：</strong>看著日落（預計 18:25）與海景。<br>
                 *不需排隊吃蝦蝦飯，把時間留給美景。*<br>
                 <div class="highlight">⚠️ 記得帶泡足湯用的小毛巾。</div>
@@ -1257,7 +1257,7 @@
             </li>
             <li class="tips-item">
                 <span class="tips-icon">🚕</span>
-                <span><strong>計程車 App：</strong>建議使用 DiDi 或 GO，這幾天移動三個人非常划算，還能把體力留在逛街上。</span>
+                <span><strong>計程車 App：</strong>建議使用 DiDi 或 GO，這幾天移動三個人分攤下來非常划算，還能把體力留在逛街上。</span>
             </li>
             <li class="tips-item">
                 <span class="tips-icon">🍓</span>
@@ -1305,9 +1305,7 @@
             <input type="text" id="shoppingInput" class="shopping-input" placeholder="輸入想買的東西..." onkeypress="handleShoppingKey(event)">
             <button class="shopping-add-btn" onclick="addShoppingItem()">＋</button>
         </div>
-        <ul id="shoppingList" class="shopping-list">
-            <!-- Items go here -->
-        </ul>
+        <ul id="shoppingList" class="shopping-list"></ul>
         <div id="emptyMsg" class="empty-msg">目前清單是空的</div>
     </div>
 </div>
@@ -1354,11 +1352,39 @@
     <div class="section-header"><div class="section-title">必買戰利品清單</div></div>
     <div class="vertical-list-container">
         <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-wishlist" src="https://images.unsplash.com/photo-1555529771-835f59e740e0?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">個人指定必買</h3><p class="card-desc">SABON, 資生堂護手霜, TSUBAKI 洗髮精, Attack 洗衣精。</p><a href="https://www.google.com/maps/search/?api=1&query=Daikoku+Drug+Naha" target="_blank" class="card-map-btn">📍 大國藥妝導航</a></div></div>
-        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-ashibinaa" src="https://images.unsplash.com/photo-1519567241046-7f570eee3d9f?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">ASHIBINAA Outlet</h3><p class="card-desc">名牌折扣 Gucci, Coach, UA。</p><a href="https://ashibinaa.okinawa/floor/index.html" target="_blank" class="card-map-btn">🔗 品牌樓層導覽</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-ashibinaa" src="https://images.unsplash.com/photo-1519567241046-7f570eee3d9f?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">ASHIBINAA Outlet</h3><p class="card-desc">✅ LeSportsac, Under Armour (折扣多)<br>❌ SABON (Outlet沒有，請去百貨)。</p><a href="https://ashibinaa.okinawa/floor/index.html" target="_blank" class="card-map-btn">🔗 品牌樓層導覽</a></div></div>
+        
+        <!-- Card: SuiSavon -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img id="img-suisavon" src="https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">首里石鹼 SuiSavon</h3>
+                <span class="card-eng">OKINAWA BOTANICAL HANDMADE SOAP</span>
+                <p class="card-desc">沖繩在地天然精油皂，香氣療癒，洗後不乾澀。推薦「白海泥洗顏乳」與「護手霜」，包裝精美，送禮首選。</p>
+                <a href="https://suisavon.jp/" target="_blank" class="card-map-btn">🔗 官網介紹</a>
+            </div>
+        </div>
+        
+        <!-- Card: FSGB Perfume -->
+        <div class="highlight-card">
+            <div class="highlight-img-wrapper">
+                <img id="img-fsgb" src="https://images.unsplash.com/photo-1595475207225-428b62bda831?w=800" class="highlight-img">
+            </div>
+            <div class="card-content">
+                <h3 class="card-h3">FSGB 沖縄香水</h3>
+                <span class="card-eng">HANDMADE PERFUME</span>
+                <p class="card-desc">位於瀨長島的質感香水店，以沖繩的大海與自然為靈感，香氣獨特，瓶身超美。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=FSGB+Okinawa+Umikaji+Terrace" target="_blank" class="card-map-btn">📍 Google 導航</a>
+            </div>
+        </div>
+
         <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-yokumoku" src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">Yoku Moku 雪茄蛋捲</h3><p class="card-desc">Ryubo 百貨 B1 必買伴手禮。</p><a href="https://www.yokumoku.co.jp/zh-tw/store/chugoku-shikoku-kyushu/30131/" target="_blank" class="card-map-btn">🔗 官網介紹</a></div></div>
         <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-3coins" src="https://images.unsplash.com/photo-1602143407151-11115cdbf69c?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">3COINS 生活雜貨</h3><p class="card-desc">生活小物、飾品。</p><a href="https://www.palcloset.jp/3coins/" target="_blank" class="card-map-btn">🔗 官網商品一覽</a></div></div>
         <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-yukishio" src="https://images.unsplash.com/photo-1621262479590-7c0b89f53229?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">宮古島雪鹽 & 餅乾</h3><p class="card-desc">烹飪鹽、雪鹽金楚糕。</p><a href="https://www.yukishio.com/" target="_blank" class="card-map-btn">🔗 官網介紹</a></div></div>
         <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-snacks" src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">超市限定零食 & 泡盛</h3><p class="card-desc">MaxValu / AEON 掃貨。</p><a href="https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E8%B6%85%E5%B8%82%E5%BF%85%E8%B2%B7" target="_blank" class="card-map-btn">🔗 搜尋必買清單</a></div></div>
+        <div class="highlight-card"><div class="highlight-img-wrapper"><img id="img-maxvalu" src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800" class="highlight-img"></div><div class="card-content"><h3 class="card-h3">MaxValu 松山店 (24H超市)</h3><p class="card-desc">離民宿步行僅 5 分鐘！24 小時營業的超大補給站。回民宿前必逛，買沖繩限定零食、泡盛、熟食與新鮮水果。</p><a href="https://www.google.com/search?q=%E6%B2%96%E7%B9%A9+MaxValu+%E5%BF%85%E8%B2%B7+%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" class="card-map-btn">🔗 搜尋必買清單</a></div></div>
     </div>
 </div>
 
@@ -1375,7 +1401,7 @@
     }
     document.addEventListener('DOMContentLoaded', () => {
         fetchWeather();
-        loadSavedImages(); // Start loading images
+        loadSavedImages(); // Load Images
         loadShoppingList(); // Load Shopping List
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1393,27 +1419,23 @@
         }, { rootMargin: '-20% 0px -60% 0px' });
         document.querySelectorAll('.day-content, .section-wrapper').forEach(section => observer.observe(section));
         
-        // Check API Key
         const savedKey = localStorage.getItem('user_gemini_key');
-        if(savedKey) {
-            apiKey = savedKey;
-            document.getElementById('keyOverlay').style.display = 'none';
-        }
+        if(savedKey) { apiKey = savedKey; document.getElementById('keyOverlay').style.display = 'none'; }
     });
 
-    // --- Image Manager (Centralized) ---
+    // --- Centralized Image Manager (EDIT HERE) ---
     const tripImages = {
-        "img-ryukyu": "BEEF.jpg",
-        "img-yokumoku": "EGGｒｏｏｌ.png",
-        "img-shrimp": "by・The・shrimp.jpg",
-        "img-shurisoba": "Noodle.jpeg",
-        "img-shishiya": "shishiya.jpg.webp",
-        "img-sukiyaki": "Suiky.jpeg",
-        "img-icecream": "Ice cream.jpg",
-        "img-makishi": "Market.webp",
-        "img-footbath": "IMG_0331.jpeg",
+        "img-ryukyu": "https://images.unsplash.com/photo-1594041680508-e3873d223f4c?w=800",
+        "img-yokumoku": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800",
+        "img-shrimp": "https://images.unsplash.com/photo-1599307767316-77e3fb6333a6?w=800",
+        "img-shurisoba": "https://images.unsplash.com/photo-1555126634-323283e090fa?w=800",
+        "img-shishiya": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800",
+        "img-sukiyaki": "https://images.unsplash.com/photo-1608670356238-d6365440d6d5?w=800",
+        "img-icecream": "https://images.unsplash.com/photo-1516550893923-37a49fc51b7a?w=800",
+        "img-makishi": "https://images.unsplash.com/photo-1534483509719-3feaee7c30da?w=800",
+        "img-footbath": "https://images.unsplash.com/photo-1614264627447-062e779a55e2?w=800",
         "img-umikaji": "https://images.unsplash.com/photo-1627915502202-692790930772?w=800",
-        "img-parco": "PARCO.png",
+        "img-parco": "https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=800",
         "img-cave": "https://images.unsplash.com/photo-1516900448138-898720b936c7?w=800",
         "img-shuri": "https://images.unsplash.com/photo-1599577937388-333dfd280a9d?w=800",
         "img-wishlist": "https://images.unsplash.com/photo-1555529771-835f59e740e0?w=800",
@@ -1421,15 +1443,15 @@
         "img-3coins": "https://images.unsplash.com/photo-1602143407151-11115cdbf69c?w=800",
         "img-yukishio": "https://images.unsplash.com/photo-1621262479590-7c0b89f53229?w=800",
         "img-snacks": "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800",
-        "img-maxvalu": "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800"
+        "img-maxvalu": "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800",
+        "img-suisavon": "https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800",
+        "img-fsgb": "https://images.unsplash.com/photo-1595475207225-428b62bda831?w=800"
     };
 
     function loadSavedImages() {
         for (const [id, url] of Object.entries(tripImages)) {
             const imgElement = document.getElementById(id);
-            if (imgElement) {
-                imgElement.src = url;
-            }
+            if (imgElement) imgElement.src = url;
         }
     }
 
@@ -1540,7 +1562,6 @@
         if(key) { localStorage.setItem('user_gemini_key', key); apiKey = key; document.getElementById('keyOverlay').style.display='none'; alert('API Key 已儲存'); }
     }
     
-    // Itinerary Extractor for Context
     function extractItinerary() {
        let context = "這是使用者的沖繩行程表：\n";
        document.querySelectorAll('.day-content').forEach(day => {
